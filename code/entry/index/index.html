@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>kr-finance-page</title>
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-default/index.css">
+    <% if (htmlWebpackPlugin.files.favicon) { %>
+    <link rel="shortcut icon" href="<%= htmlWebpackPlugin.files.favicon %>">
+    <% } %>
+    <% for (var i in htmlWebpackPlugin.files.css) { %>
+    <link href="<%= htmlWebpackPlugin.files.css[i] %>" rel="stylesheet">
+    <% } %>
+</head>
+<body>
+<div id="app"></div>
+<% for (var i in htmlWebpackPlugin.files.js) { %>
+<script src="<%= htmlWebpackPlugin.files.js[i] %>"></script>
+<% } %>
+</body>
+</html>
