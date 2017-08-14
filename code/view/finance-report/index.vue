@@ -736,8 +736,16 @@
                         if(valueArrM[j] == 0 && valueArrR[j] == 0) {
                         } else {
                             nameArrTemp.push(nameArr[j]);
-                            valueArrMTemp.push(-valueArrM[j]);
-                            valueArrRTemp.push(valueArrR[j]);
+                            if (valueArrM[j] == 0) {
+                                valueArrMTemp.push('');
+                            } else {
+                                valueArrMTemp.push(-valueArrM[j]);
+                            }
+                            if (valueArrR[j] == 0) {
+                                valueArrRTemp.push('');
+                            } else {
+                                valueArrRTemp.push(valueArrR[j]);
+                            }
                         }
                     }
                     console.log('name'+nameArrTemp);
@@ -747,16 +755,10 @@
                     var optionAmount = {
                         title: {
                             text: '上周（' + _this.bannerData.startTimeMd + '-'+ _this.bannerData.endTimeMd + '）' + _this.industyName + '领域获投金额分布',
-                            x:'center',
-                            subtext: '未披露的融资数量：' + wplValue,
-                            subtextStyle: {
-                                fontSize: '15',
-                                color: '#888',
-                                
-                            }
+                            x:'center'
                         },
                         legend: {
-                            data:[ '美元', '人民币'],
+                            data:[ '美元', '人民币', '金额未披露的融资数量：' + wplValue],
                             bottom: 0
                         },
                         toolbox: {  // 工具内容
@@ -792,6 +794,9 @@
                         xAxis: {
                             show: true,
                             type: 'value',
+                            // name: '温度',
+                            // nameGap: -30,
+                            // nameLocation: 'end',
                             // splitLine: { // y轴分割线
                             //     show: false
                             // },
@@ -842,6 +847,12 @@
                                     }
                                 },
                                 data: valueArrMTemp  
+                            },
+                            {
+                                name: '金额未披露的融资数量：' + wplValue,
+                                type:'bar',
+                                stack: '总量',
+                                data: [] 
                             }
                         ]
                     };

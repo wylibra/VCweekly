@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import ElementUI from 'element-ui'
+import ElementUI from 'element-ui';
 import Root from 'view';
 import router from 'view/router';
 import store from 'store';
