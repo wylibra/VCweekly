@@ -101,7 +101,7 @@ module.exports=function(option){
             rules:[
                 {
                     test: /\.(gif|jpg|png|woff|woff2|svg|eot|ttf)\??.*$/,
-                    include:[codePath],
+                    //include:[codePath],
                     use:[{
                         loader:'url-loader',
                         options:{
@@ -132,6 +132,9 @@ module.exports=function(option){
                     test: /\.js$/,
                     include:[codePath],
                     use: [babelLoaderConf]
+                }, {
+                    test: /\.css$/,
+                    use: ['style-loader','css-loader']
                 }
             ],
         }
