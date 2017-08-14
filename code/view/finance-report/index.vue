@@ -1350,6 +1350,15 @@
                 axios.get('/api/investment/countInfoInvestByTime', {params: sendData})
                 .then(function (response) {
                     _this.companysData = response.data.data;
+                    for(var i = 0;i < _this.companysData.length;i++) {
+                        var famount = _this.companysData[i].finance_amount;
+                        if(famount.indexOf('人民币') > -1) {
+                            _this.companysData[i].finance_amount = '¥ ' + famount.split('人民币')[0];
+                        }
+                        if(famount.indexOf('美元') > -1) {
+                            _this.companysData[i].finance_amount = '$ ' + famount.split('美元')[0];
+                        }
+                    }
                 })
                 .catch(function (error) {
                     console.log(error);
