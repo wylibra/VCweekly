@@ -123,8 +123,8 @@
     import {mapState,mapGetters,mapMutations,mapActions} from 'vuex'
     import axios from 'axios'
     import echarts from 'echarts'
-    import 'echarts/map/js/china.js'
-    import 'echarts/lib/chart/scatter/ScatterView.js'
+    // import 'echarts/map/js/china.js'
+    // import 'echarts/lib/chart/scatter/ScatterView.js'
     export default{
         props:{
         },
@@ -219,8 +219,6 @@
                 } else {
                     var start = new Date((this.datevalue[0]).format('yyyy/MM/dd')).getTime();
                     var end = new Date((this.datevalue[1]).format('yyyy/MM/dd')).getTime();
-                    console.log((this.datevalue[0]).format('yyyy/MM/dd'));
-                    console.log((this.datevalue[1]).format('yyyy/MM/dd'));
                     if ((end - start) !== 6*24*60*60*1000) {
                         this.showError();
                         this.datevalue = '';
@@ -240,6 +238,9 @@
             },
             // 投资事件总结
             areaValueChange: function() {
+                if(this.datevalue == ',' || this.datevalue == '') {
+                    return;
+                }
                 this.getIndustyData()
                 this.getIndustyData2()
                 this.getPhaseData()
@@ -624,6 +625,9 @@
                 console.log(this.areaValueIndusty);
             },
             industyValueChange: function() {
+                if(this.datevalue == ',' || this.datevalue == '') {
+                    return;
+                }
                 for(var i = 0;i<this.locale.industy.length;i++) {
                     if(this.locale.industy[i].value == this.industyValue) {
                         this.industyName = this.locale.industy[i].name;
