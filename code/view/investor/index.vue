@@ -2,16 +2,17 @@
     <div :class="$style.root">
         <div :class="$style.investor" v-show="investorData.length">
             <h3>投资人 投资信息列表</h3>
-            <!-- <div style="margin-top: 15px;">
-                <el-input placeholder="请输入内容" v-model="input5">
-                    <el-select v-model="select" slot="prepend" placeholder="请选择">
-                    <el-option label="餐厅名" value="1"></el-option>
-                    <el-option label="订单号" value="2"></el-option>
-                    <el-option label="用户电话" value="3"></el-option>
+             <div :class="$style.search">
+                <el-input placeholder="请输入搜索内容" v-model="search" @keyup.enter="searchData">
+                    <el-select v-model="select" slot="prepend" placeholder="请选择" :class="$style.select">
+                        <el-option label="全部" value=""></el-option>
+                        <el-option label="投资人" value="1"></el-option>
+                        <el-option label="投资机构" value="2"></el-option>
+                        <el-option label="行业" value="3"></el-option>
                     </el-select>
-                    <el-button slot="append" icon="search"></el-button>
+                    <el-button slot="append" icon="search" @click="searchData"></el-button>
                 </el-input>
-            </div> -->
+            </div> 
             <table >
                 <thead>
                     <tr>
@@ -57,6 +58,9 @@
                 </el-pagination>
             </div>
         </div>
+        <div :class="$style.investor" v-show="!investorData.length">
+            <h3>暂无数据</h3>
+        </div>
     </div>
 </template>
 <script>
@@ -79,7 +83,9 @@
                     pageSize: 10, // 
                     total: 0,  // 总页数
                     currentPage: 1
-                }
+                },
+                search: '',
+                select: ''
             };
         },
         mounted: function () {
@@ -150,6 +156,11 @@
             handleCurrentChange(val) {
                 this.pageSet.currentPage = val;
                 this.getData();
+            },
+            searchData: function() {
+                // alert(22);
+                console.log(this.search);
+                // this.getData();
             }
         }
     }
@@ -164,6 +175,12 @@
         .investor {
             width:1080px;
             margin: 60px auto;
+            .search {
+                margin: 20px 0 20px 650px;
+                .select{
+                    width: 110px;
+                }
+            }
             h3 {
                 color: #235fc5;
                 font-size: 20px;
