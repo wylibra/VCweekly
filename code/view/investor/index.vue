@@ -2,6 +2,16 @@
     <div :class="$style.root">
         <div :class="$style.investor" v-show="investorData.length">
             <h3>投资人 投资信息列表</h3>
+            <!-- <div style="margin-top: 15px;">
+                <el-input placeholder="请输入内容" v-model="input5">
+                    <el-select v-model="select" slot="prepend" placeholder="请选择">
+                    <el-option label="餐厅名" value="1"></el-option>
+                    <el-option label="订单号" value="2"></el-option>
+                    <el-option label="用户电话" value="3"></el-option>
+                    </el-select>
+                    <el-button slot="append" icon="search"></el-button>
+                </el-input>
+            </div> -->
             <table >
                 <thead>
                     <tr>
@@ -43,7 +53,7 @@
                 :current-page="pageSet.currentPage"
                 :page-sizes="pageSet.pageSizes"
                 layout="total, sizes, prev, pager, next, jumper"
-                :total="pageSet.total">
+                :page-count="pageSet.total">
                 </el-pagination>
             </div>
         </div>
@@ -67,7 +77,7 @@
                 pageSet: {
                     pageSizes: [10, 20, 30, 40], // 分页
                     pageSize: 10, // 
-                    total: 1000,  // 总页数
+                    total: 0,  // 总页数
                     currentPage: 1
                 }
             };
