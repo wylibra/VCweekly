@@ -1,29 +1,23 @@
 <template>
     <div :class="$style.root">
-        <div :class="$style.investor" v-show="investorData.length">
+        <div :class="$style.investor">
             <h3>投资人 投资信息列表</h3>
              <div :class="$style.search">
-                <el-input placeholder="请输入搜索内容" v-model="search" @keyup.enter="searchData">
-                    <el-select v-model="select" slot="prepend" placeholder="请选择" :class="$style.select">
-                        <el-option label="全部" value=""></el-option>
-                        <el-option label="投资人" value="1"></el-option>
-                        <el-option label="投资机构" value="2"></el-option>
-                        <el-option label="行业" value="3"></el-option>
-                    </el-select>
-                    <el-button slot="append" icon="search" @click="searchData"></el-button>
+                <el-input placeholder="请输入搜索内容" v-model="searchkey" @keyup.enter="sendData">
+                    <el-button slot="append" icon="search" @click="sendData"></el-button>
                 </el-input>
             </div> 
             <table >
                 <thead>
                     <tr>
-                        <th style="width: 200px;">投资人</th>
-                        <th style="width: 300px;">投资信息</th>
-                        <th style="width: 250px;">投资机构</th>
-                        <th style="width: 200px;">投资行业</th>
+                        <th style="width: 171px;">投资人</th>
+                        <th style="width: 262px;">投资信息</th>
+                        <th style="width: 216px;">投资机构</th>
+                        <th style="width: 431px;">投资行业</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="(item, index) in investorData">
+                    <tr v-for="(item, index) in investorData" v-show="investorData.length">
                         <td :class="$style.name">
                             {{item.name?item.name:'-'}}
                         </td>
@@ -45,9 +39,12 @@
                             <div :id="index" :class="$style.chartClass"></div>
                         </td>
                     </tr>  
+                    <tr v-show="noData">
+                        <td colspan="4" style="text-align: center;">暂无相关数据</td>
+                    </tr>
                 </tbody> 
             </table> 
-            <div :class="$style.block">
+            <div :class="$style.block" v-show="investorData.length">
                 <el-pagination
                 @size-change="handleSizeChange"
                 @current-change="handleCurrentChange"
@@ -57,9 +54,6 @@
                 :page-count="pageSet.total">
                 </el-pagination>
             </div>
-        </div>
-        <div :class="$style.investor" v-show="!investorData.length">
-            <h3>暂无数据</h3>
         </div>
     </div>
 </template>
@@ -84,8 +78,8 @@
                     total: 0,  // 总页数
                     currentPage: 1
                 },
-                search: '',
-                select: ''
+                searchkey: '',
+                noData: false
             };
         },
         mounted: function () {
@@ -98,11 +92,14 @@
                 var sendData = {
                     cmd: 'get_lp_info',
                     page: _this.pageSet.currentPage,
-                    pagesize: _this.pageSet.pageSize
+                    pagesize: _this.pageSet.pageSize,
+                    searchkey: _this.searchkey                    
                 }
+                _this.noData = false;
                 axios.get('http://data-internaltest.corp.36kr.com/crm', {params: sendData})
                 .then(function (response) {
                     _this.investorData = response.data.data;
+                    _this.noData = response.data.data.length ? false: true;
                     _this.pageSet.total = response.data.total;
                     var len = _this.investorData.length;
                     setTimeout(function() {
@@ -157,10 +154,9 @@
                 this.pageSet.currentPage = val;
                 this.getData();
             },
-            searchData: function() {
-                // alert(22);
-                console.log(this.search);
-                // this.getData();
+            sendData: function() {
+                this.pageSet.currentPage = 1;
+                this.getData();
             }
         }
     }
@@ -198,17 +194,17 @@
                     border-bottom:2px solid #6c90c4;
                 }
                 tbody tr {
+                    line-height: 20px;
+                    color: #5a5958;
                     font-size: 15px;
                     border-bottom:1px solid #6c90c4;
                     &:last-child {
                         border-bottom:2px solid #6c90c4;
                     }
                     td {
-                        color: #5a5958;
                         padding: 15px 5px;
                         border-right:1px solid #b2c7e1;
                         vertical-align: middle;
-                        line-height: 20px;
                         &:last-child {
                             border-right:none;
                         }
