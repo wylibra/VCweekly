@@ -1,7 +1,7 @@
 <template>
     <div :class="$style.root">
         <div :class="$style.investor" v-show="investorData.length">
-            <h3>投资人投资信息列表</h3>
+            <h3>投资人 投资信息列表</h3>
             <table >
                 <thead>
                     <tr>
