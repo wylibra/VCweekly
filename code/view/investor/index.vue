@@ -73,6 +73,7 @@
             };
         },
         mounted: function () {
+            document.title = '投资列表';
            this.getData();
         },
         methods:{

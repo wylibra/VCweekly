@@ -163,6 +163,7 @@
             };
         },
         mounted: function () {
+            document.title = '融资周报';
         },
         methods:{
             showError() {
