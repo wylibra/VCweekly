@@ -5,4 +5,7 @@ module.exports=[,{
             resolve(require('view/finance-report/index.vue').default)
         },'finance-report')
     }
+},{
+    path:'/investor',
+    component:require('view/investor/index.vue').default
 }];
