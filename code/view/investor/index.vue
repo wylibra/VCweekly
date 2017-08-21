@@ -3,7 +3,7 @@
         <div :class="$style.investor">
             <h3>投资人 投资信息列表</h3>
              <div :class="$style.search">
-                <el-input placeholder="请输入搜索内容" v-model="searchkey" @keyup.enter="sendData">
+                <el-input placeholder="请输入搜索内容" v-model="searchkey" @keyup.enter.native="sendData">
                     <el-button slot="append" icon="search" @click="sendData"></el-button>
                 </el-input>
             </div> 
@@ -105,7 +105,6 @@
                     setTimeout(function() {
                         for(var i=0; i<len; i++) {
                             var industryData = _this.investorData[i].industry;
-                            console.log(document.getElementById(i));
                             var industryChart = echarts.init(document.getElementById(i));
                             var option = {
                                 tooltip : {
