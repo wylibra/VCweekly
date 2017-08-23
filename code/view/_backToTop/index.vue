@@ -69,14 +69,15 @@
                 const start = window.pageYOffset;
                 let i = 0;
                 this.interval = setInterval(() => {
-                const next = Math.floor(this.easeInOutQuad(10 * i, start, -start, 500));
-                if (next <= this.backPosition) {
-                    window.scrollTo(0, this.backPosition);
-                    clearInterval(this.interval)
-                } else {
-                    window.scrollTo(0, next);
-                }
-                i++;
+                    const next = Math.floor(this.easeInOutQuad(10 * i, start, -start, 500));
+                    console.log(next);
+                    if (next <= this.backPosition) {
+                        window.scrollTo(0, this.backPosition);
+                        clearInterval(this.interval)
+                    } else {
+                        window.scrollTo(0, next);
+                    }
+                    i++;
                 }, 16.7)
             },
             easeInOutQuad(t, b, c, d) {
@@ -94,17 +95,6 @@
             display: inline-block;
             text-align: center;
             cursor: pointer;
-        }
-        .backtotop:hover {
-            background: #d5dbe7;
-        }
-        .fade-enter-active,
-        .fade-leave-active {
-            transition: opacity .5s;
-        }
-        .fade-enter,
-        .fade-leave-to {
-            opacity: 0
         }
         .backtotop .Icon {
             fill: #9aaabf;
