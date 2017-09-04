@@ -284,7 +284,9 @@
                         toolbox: {  // 工具内容
                             show: true,
                             feature: {
-                                saveAsImage: {}   // 保存图片
+                                saveAsImage: {
+                                    pixelRatio: 2
+                                }   // 保存图片
                             }
                         },
                         grid: {
@@ -431,7 +433,9 @@
                         toolbox: {  // 工具内容
                             show: true,
                             feature: {
-                                saveAsImage: {}   // 保存图片
+                                saveAsImage: {
+                                    pixelRatio: 2
+                                }   // 保存图片
                             }
                         },
                         grid: {
@@ -585,7 +589,9 @@
                         toolbox: {  // 工具内容
                             show: true,
                             feature: {
-                                saveAsImage: {}   // 保存图片
+                                saveAsImage: {
+                                    pixelRatio: 2
+                                }   // 保存图片
                             }
                         },
                         tooltip : {
@@ -676,7 +682,9 @@
                         toolbox: {  // 工具内容
                             show: true,
                             feature: {
-                                saveAsImage: {}   // 保存图片
+                                saveAsImage: {
+                                    pixelRatio: 2
+                                }   // 保存图片
                             }
                         },
                         series : [
@@ -781,7 +789,9 @@
                         toolbox: {  // 工具内容
                             show: true,
                             feature: {
-                                saveAsImage: {}   // 保存图片
+                                saveAsImage: {
+                                    pixelRatio: 2
+                                }   // 保存图片
                             }
                         },
                         tooltip : {
