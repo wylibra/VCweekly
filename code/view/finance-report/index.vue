@@ -1412,6 +1412,8 @@
     */
     @import (optional,reference) "~view/theme.less";
     .root{
+        font-family: 'Microsoft YaHei';
+        color: #848484;
         width:985px;
         margin: 60px auto;
         .block {
