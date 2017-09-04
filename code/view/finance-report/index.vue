@@ -624,6 +624,8 @@
                                             var colorList = [
                                                 '#0076D0', '#43A8E0', '#22BA6F', '#41CC5D', '#FFA300',
                                                 '#F2CE00', '#FF6000', '#FF7020', '#A6A6A6', '#D9D9D9',
+                                                '#c1beff', '#c2e7ff', '#fabdff', '#0076D0', '#43A8E0', '#22BA6F', '#41CC5D', '#FFA300',
+                                                '#F2CE00', '#FF6000', '#FF7020', '#A6A6A6', '#D9D9D9',
                                                 '#c1beff', '#c2e7ff', '#fabdff'];
                                             return colorList[params.dataIndex]
                                         }
@@ -712,7 +714,9 @@
                                             var colorList = [
                                                 '#0076D0', '#43A8E0', '#22BA6F', '#41CC5D', '#FFA300',
                                                 '#F2CE00', '#FF6000', '#FF7020', '#A6A6A6', '#D9D9D9',
-                                                '#c1beff', '#c2e7ff', '#fabdff' 
+                                                '#c1beff', '#c2e7ff', '#fabdff', '#0076D0', '#43A8E0', '#22BA6F', '#41CC5D', '#FFA300',
+                                                '#F2CE00', '#FF6000', '#FF7020', '#A6A6A6', '#D9D9D9',
+                                                '#c1beff', '#c2e7ff', '#fabdff'
                                             ];
                                             return colorList[params.dataIndex]
                                         },
@@ -847,6 +851,7 @@
                                 type:'bar',
                                 barWidth: 15,
                                 stack: '总量',
+                                color: ['#0076D0'],
                                 label: {
                                     normal: {
                                         show: true,
@@ -863,6 +868,7 @@
                                 type:'bar',
                                 barWidth: 15,
                                 stack: '总量',
+                                color: ['#F2CE00'],
                                 label: {
                                     normal: {
                                         show: true,
