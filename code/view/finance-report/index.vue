@@ -144,6 +144,16 @@
                     'line-height': '45px', // 请保持与高度一致以垂直居中
                     background: '#e7eaf1'// 按钮的背景颜色
                 },
+                textStyleTitle: {
+                    color: '#595959',
+                    fontSize: '14',
+                    fontFamily: 'Microsoft YaHei'
+                },
+                textStyle: {
+                    color: '#7F7F7F',
+                    fontSize: '12',
+                    fontFamily: 'Microsoft YaHei'
+                },
                 locale: require('./.assets/locale/zh'),
                 activeNames: ['1', '2'],
                 datevalue: '', // 时间
@@ -279,7 +289,8 @@
                     var optionIndusty = {
                         title: {
                             text: '上周（' + _this.bannerData.startTimeMd + '-'+ _this.bannerData.endTimeMd + '）' + _this.areaOptions[_this.areaValue - 1].label + '各领域获投数量',
-                            x:'center'
+                            x:'center',
+                            textStyle: _this.textStyleTitle
                         },
                         toolbox: {  // 工具内容
                             show: true,
@@ -315,9 +326,7 @@
                                     },
                                     // rotate:-90,//倾斜度 -90 至 90 默认为0  
                                     margin:10,  
-                                    textStyle:{  
-                                        color:"#000"  
-                                    }  
+                                    textStyle: _this.textStyle
                                 }, 
                             }
                         ],
@@ -329,7 +338,10 @@
                                 },
                                 axisTick: { //坐标轴刻度相关设置
                                     show: false
-                                }
+                                },
+                                axisLabel:{  
+                                    textStyle:_this.textStyle
+                                }, 
                             }
                         ],
                         series : [
@@ -344,9 +356,7 @@
                                         label:{ 
                                             show: true,
                                             position: 'top',
-                                            textStyle: {
-                                                color: '#000'
-                                            }
+                                            textStyle: _this.textStyle
                                         }
                                     }
                                 }
@@ -423,12 +433,14 @@
                         title : {
                             text: '前两周' + _this.areaOptions[_this.areaValue - 1].label + '各领域获投公司数量',
                             x: 'center',
+                            textStyle: _this.textStyleTitle
                             // itemGap: '100',
                             // padding:[0,0,210,0]
                         },
                         legend: {
                             data: ['上上周（' + _this.bannerData.startTimeupMd + '-'+ _this.bannerData.endTimeupMd + '）', '上周（' + _this.bannerData.startTimeMd + '-'+ _this.bannerData.endTimeMd + '）'],
-                            bottom: 0
+                            bottom: 0,
+                            textStyle:_this.textStyle
                         },
                         toolbox: {  // 工具内容
                             show: true,
@@ -460,9 +472,7 @@
                                     },
                                     // rotate:-90,//倾斜度 -90 至 90 默认为0  
                                     margin:10,  
-                                    textStyle:{  
-                                        color:"#000"  
-                                    }  
+                                    textStyle:_this.textStyle
                                 }, 
                             }
                         ],
@@ -475,6 +485,9 @@
                                 },
                                 axisTick: { //坐标轴刻度相关设置
                                     show: false
+                                }, 
+                                axisLabel:{  
+                                    textStyle:_this.textStyle
                                 }, 
                             },
                             // {
@@ -501,9 +514,7 @@
                                         label:{ // 柱状图显示数值
                                             show: true,
                                             position: 'top',
-                                            textStyle: {
-                                                color: '#000'
-                                            }
+                                            textStyle: _this.textStyle
                                         }
                                     }
                                 },
@@ -519,9 +530,7 @@
                                         label:{ 
                                             show: true,
                                             position: 'top',
-                                            textStyle: {
-                                                color: '#000'
-                                            }
+                                            textStyle: _this.textStyle
                                         }
                                     }
                                 },
@@ -584,7 +593,8 @@
                     var optionPhase = {
                         title: {
                             text: '上周（' + _this.bannerData.startTimeMd + '-'+ _this.bannerData.endTimeMd + '）' + _this.areaOptions[_this.areaValue - 1].label + '获投事件轮次分布',
-                            x:'center'
+                            x:'center',
+                            textStyle: _this.textStyleTitle
                         },
                         toolbox: {  // 工具内容
                             show: true,
@@ -616,9 +626,7 @@
                                             show: true, 
                                             // formatter: '{b} \n{d}%',
                                             formatter: '{b} {d}%',
-                                            textStyle: {
-                                                color: '#000'
-                                            }
+                                            textStyle: _this.textStyle
                                         },
                                         color: function (params) {
                                             var colorList = [
@@ -675,7 +683,8 @@
                     var optionPhase = {
                         title: {
                             text: '上周（' + _this.bannerData.startTimeMd + '-'+ _this.bannerData.endTimeMd + '）'+ _this.industyName + '领域获投轮次分布',
-                            x:'center'
+                            x:'center',
+                            textStyle: _this.textStyleTitle
                         },
                         tooltip : {
                             trigger: 'item',
@@ -706,9 +715,7 @@
                                         label:{ 
                                             show: true, 
                                             formatter: '{b} {d}%',
-                                            textStyle: {
-                                                color: '#000'
-                                            }
+                                            textStyle: _this.textStyle
                                         }, 
                                         color: function (params) {
                                             var colorList = [
@@ -784,11 +791,13 @@
                     var optionAmount = {
                         title: {
                             text: '上周（' + _this.bannerData.startTimeMd + '-'+ _this.bannerData.endTimeMd + '）' + _this.industyName + '领域获投金额分布',
-                            x:'center'
+                            x:'center',
+                            textStyle: _this.textStyleTitle
                         },
                         legend: {
                             data:[ '美元', '人民币', '金额未披露的融资数量：' + wplValue],
-                            bottom: 0
+                            bottom: 0,
+                            textStyle:_this.textStyle
                         },
                         toolbox: {  // 工具内容
                             show: true,
@@ -835,6 +844,7 @@
                                 show: false
                             },
                             axisLabel : { 
+                                textStyle:_this.textStyle,
                                 formatter: function (value){return Math.abs(value);} //坐标轴显示的数值都取绝对值
                             } 
                         },
@@ -843,6 +853,9 @@
                             axisTick: { //坐标轴刻度相关设置
                                 show: false
                             },
+                            axisLabel:{  
+                                textStyle:_this.textStyle
+                            }, 
                             data: nameArrTemp                        
                         },
                         series: [
@@ -856,9 +869,7 @@
                                     normal: {
                                         show: true,
                                         position: 'right',
-                                        textStyle: {
-                                            color: '#000'
-                                        },
+                                        textStyle: _this.textStyle
                                     }
                                 },
                                 data: valueArrRTemp 
@@ -873,9 +884,7 @@
                                     normal: {
                                         show: true,
                                         position: 'left',
-                                        textStyle: {
-                                            color: '#000'
-                                        },
+                                        textStyle: _this.textStyle,
                                         formatter:function(v){return Math.abs(v.data)}
                                     }
                                 },
@@ -928,7 +937,8 @@
                     var optionAmount = {
                         title: {
                             text: '上周（' + _this.bannerData.startTimeMd + '-'+ _this.bannerData.endTimeMd + '）' + _this.industyName + '领域获投金额分布',
-                            x:'center'
+                            x:'center',
+                            textStyle: _this.textStyleTitle
                         },
                         grid: {
                             left: '3%',
@@ -966,9 +976,7 @@
                                         label:{ 
                                             show: true,
                                             position: 'right',
-                                            textStyle: {
-                                                color: '#000'
-                                            }
+                                            textStyle: _this.textStyle
                                         },
                                         color: function (params) {
                                             var colorList = [
@@ -1012,7 +1020,8 @@
                     var optionSubIndustry = {
                         title: {
                             text: '上周（' + _this.bannerData.startTimeMd + '-'+ _this.bannerData.endTimeMd + '）' + _this.industyName + '领域获投子领域',
-                            x:'center'
+                            x:'center',
+                            textStyle: _this.textStyleTitle
                         },
                         grid: {
                             left: '3%',
@@ -1048,9 +1057,7 @@
                                         label:{ 
                                             show: true,
                                             position: 'right',
-                                            textStyle: {
-                                                color: '#000'
-                                            }
+                                            textStyle: _this.textStyle
                                         },
                                         color: function (params) {
                                             var colorList = [
@@ -1295,7 +1302,8 @@
                     var optionMap = {
                         title: {
                             text: '上周（' + _this.bannerData.startTimeMd + '-'+ _this.bannerData.endTimeMd + '）'+ _this.industyName + '领域获投地域',
-                            left: 'center'
+                            left: 'center',
+                            textStyle: _this.textStyleTitle
                         },
                         tooltip : {
                             trigger: 'item'
