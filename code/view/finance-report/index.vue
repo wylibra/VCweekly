@@ -1435,15 +1435,17 @@
         .companys {
             margin-top: 30px;
             h3 {
-                color: #235fc5;
-                font-size: 20px;
+                color: #0076D0;
+                font-size: 24px;
                 font-weight: 700;
                 text-align: center;
                 padding: 20px;
             }
             table {
                 thead th{
-                    color: #235fc5;
+                    background-color: #0076D0;
+                    color: #fff;
+                    font-size: 16px;
                     text-align: center;
                     padding: 15px 0;
                     font-weight: 700;
@@ -1456,7 +1458,8 @@
                         border-bottom:2px solid #6c90c4;
                     }
                     td {
-                        color: #5a5958;
+                        color: #595959;
+                        font-size: 16px;
                         padding: 15px 5px;
                         border-right:1px solid #b2c7e1;
                         vertical-align: middle;
