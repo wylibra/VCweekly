@@ -6,9 +6,11 @@
   "dependencies": {
     "axios": "^0.16.2",
     "babel-polyfill": "^6.23.0",
+    "download": "^6.2.5",
     "echarts": "^3.6.2",
     "element-ui": "^1.4.2",
     "es6-promise": "^4.1.1",
+    "html2canvas": "^0.5.0-beta4",
     "path2": "^0.1.0",
     "vue": "^2.4.2",
     "vue-router": "^2.7.0",

@@ -177,6 +177,9 @@ module.exports=function(option){
         }));
         result.resolve.alias.vue='vue/dist/vue.min.js';
     }
+    else{
+        result.devtool='eval-source-map';
+    }
     if(option.commonChunk){
         result.plugins.push(new webpack.optimize.CommonsChunkPlugin('common'));
     }
