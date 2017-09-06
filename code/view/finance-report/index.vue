@@ -48,7 +48,6 @@
         </el-collapse>
         <br/>
         <el-button type="primary" @click="saveBtn"><a  target="_blank" id="down_button">保存图片</a></el-button>
-        
         <div :class="$style.companys" id="table">
             <h3>{{industyName}}领域获投事件简介</h3>
             <table>
@@ -118,6 +117,7 @@ import axios from 'axios'
 import echarts from 'echarts'
 import BackToTop from '../_backToTop/index';
 import html2canvas from 'html2canvas';
+import download from 'downloadjs';
 export default {
     props: {
     },
@@ -1403,15 +1403,8 @@ export default {
             var table = document.getElementById('table');
             html2canvas(table, {
                 onrendered: function(canvas) {
-                    // var w = table.offsetWidth;
-                    // var h = table.offsetHeight;
-                    // console.log(h);
-                    // canvas.width = w * 2;
-                    // canvas.height = h * 2;
-                    // canvas.style.width = w + "px";
-                    // canvas.style.height = h + "px";
-                    // var context = canvas.getContext("2d");
-                    // context.scale(2, 2);
+                    var imgUri = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream"); // 获取生成的图片的url  
+                    download(imgUri, "table.png", "image/png");
                     // function saver(url, name){
                     //     var anchor = document.createElement('a')
                     //     if ('download' in anchor) { //html5 A[download]
@@ -1424,11 +1417,11 @@ export default {
                     //         setTimeout(function() {
                     //             anchor.click();
                     //             document.body.removeChild(anchor);
-                    //         }, 66);
+                    //         }, 1000);
                     //         return true;
-                    // }}
-                    var imgUri = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream"); // 获取生成的图片的url  
-                    window.location.href=imgUri;
+                    //     }
+                    // }
+                    // window.location.href=imgUri;
                     // saver(imgUri, 'table.png'); // 下载图片  
                 },
             });
