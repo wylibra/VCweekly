@@ -1412,23 +1412,24 @@ export default {
                     // canvas.style.height = h + "px";
                     // var context = canvas.getContext("2d");
                     // context.scale(2, 2);
-                    function saver(url, name){
-                        var anchor = document.createElement('a')
-                        if ('download' in anchor) { //html5 A[download]
-                            anchor.href = url;
-                            anchor.setAttribute("download", name);
-                            anchor.className = "download-js-link";
-                            anchor.innerHTML = "downloading...";
-                            anchor.style.display = "none";
-                            document.body.appendChild(anchor);
-                            setTimeout(function() {
-                                anchor.click();
-                                document.body.removeChild(anchor);
-                            }, 66);
-                            return true;
-                    }}
+                    // function saver(url, name){
+                    //     var anchor = document.createElement('a')
+                    //     if ('download' in anchor) { //html5 A[download]
+                    //         anchor.href = url;
+                    //         anchor.setAttribute("download", name);
+                    //         anchor.className = "download-js-link";
+                    //         anchor.innerHTML = "downloading...";
+                    //         anchor.style.display = "none";
+                    //         document.body.appendChild(anchor);
+                    //         setTimeout(function() {
+                    //             anchor.click();
+                    //             document.body.removeChild(anchor);
+                    //         }, 66);
+                    //         return true;
+                    // }}
                     var imgUri = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream"); // 获取生成的图片的url  
-                    saver(imgUri, 'table.png'); // 下载图片  
+                    window.location.href=imgUri;
+                    // saver(imgUri, 'table.png'); // 下载图片  
                 },
             });
         }
