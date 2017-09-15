@@ -33,11 +33,11 @@
                         </el-pagination>
                     </div>
                 </el-collapse-item>
-                <el-collapse-item title="lp" name="2">
+                <el-collapse-item title="LP" name="2">
                     <table>
                         <thead>
                             <tr>
-                                <th>投资人</th>
+                                <th>投资人（LP）</th>
                                 <th>投资金额</th>
                             </tr>
                         </thead>

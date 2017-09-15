@@ -32,9 +32,9 @@
                         <td>
                             <div v-for="cell in item.investpath" :class="$style.investpath">
                                 <div v-show="cell.org_name">
-                                    名称： <span :class="$style.isclicked" @click="goToOrganization(cell.name)">{{cell.org_name}}</span>
+                                    机构： <span :class="$style.isclicked" @click="goToOrganization(cell.name)">{{cell.org_name}}</span>
                                     </div>
-                                <div v-show="cell.org_node">机构：{{cell.org_node}}</div>
+                                <div v-show="cell.org_node">投资实体：{{cell.org_node}}</div>
                                 <div v-show="cell.org_money">金额：{{cell.org_money}}</div>
                                 <div v-show="cell.org_time">时间：{{cell.org_time}}</div>
                             </div>

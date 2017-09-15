@@ -8,10 +8,10 @@
                         <thead>
                             <tr>
                                 <th v-show="organizationObj.gp.length">gp</th>
-                                <th v-show="organizationObj.nodes.length">nodes</th>
-                                <th v-show="organizationObj.suppl_com.length">suppl_com</th>
-                                <th>cover</th>
-                                <th v-show="organizationObj.uncover_com.length">uncover_com</th>
+                                <th v-show="organizationObj.nodes.length">投资实体</th>
+                                <th v-show="organizationObj.suppl_com.length">已发现投资事件</th>
+                                <th>覆盖情况</th>
+                                <th v-show="organizationObj.uncover_com.length">未发现投资事件</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -47,8 +47,8 @@
                     <table>
                         <thead>
                             <tr>
-                                <th>name</th>
-                                <th>invest_coms</th>
+                                <th>投资实体</th>
+                                <th>被投公司</th>
                             </tr>
                         </thead>
                         <tbody v-for="(item, index) in orgPathData" v-show="orgPathData.length">
