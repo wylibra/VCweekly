@@ -7,11 +7,11 @@
                     <table>
                         <thead>
                             <tr>
-                                <th v-show="organizationObj.gp.length">gp</th>
-                                <th v-show="organizationObj.nodes.length">投资实体</th>
-                                <th v-show="organizationObj.suppl_com.length">已发现投资事件</th>
+                                <th>gp</th>
+                                <th>投资实体</th>
+                                <th>已发现投资事件</th>
                                 <th>覆盖情况</th>
-                                <th v-show="organizationObj.uncover_com.length">未发现投资事件</th>
+                                <th>未发现投资事件</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -70,21 +70,32 @@
                 </el-collapse-item>
             </el-collapse>
         </div>
+        <back-to-top :customStyle="myBackToTopStyle" :visibilityHeight="300" :backPosition="50"></back-to-top>
     </div>
 </template>
 <script>
     import {mapState,mapGetters,mapMutations,mapActions} from 'vuex'
     import axios from 'axios'
     import router from 'view/router';
+    import BackToTop from '../_backToTop/index';
     export default{
         props:{
 
         },
         components:{
-
+            BackToTop
         },
         data:function(){
             return {
+                myBackToTopStyle: {
+                    right: '50px',
+                    bottom: '50px',
+                    width: '40px',
+                    height: '40px',
+                    'border-radius': '4px',
+                    'line-height': '45px', // 请保持与高度一致以垂直居中
+                    background: '#e7eaf1'// 按钮的背景颜色
+                },
                 locale: require('./.assets/locale/zh'),
                 activeNames: ['1', '2'],
                 organizationObj: {},
