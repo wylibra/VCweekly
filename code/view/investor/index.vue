@@ -11,8 +11,8 @@
                 <thead>
                     <tr>
                         <th style="width: 171px;">投资人</th>
-                        <th style="width: 262px;">投资信息</th>
                         <th style="width: 216px;">投资机构</th>
+                        <th style="width: 262px;">投资信息</th>
                         <th style="width: 431px;">投资行业</th>
                     </tr>
                 </thead>
@@ -22,17 +22,21 @@
                             {{item.name?item.name:'-'}}
                         </td>
                         <td>
-                            <div v-for="cell in item.investpath" :class="$style.investpath">
-                                <div v-show="cell.org_name">名称：{{cell.org_name}}</div>
-                                <div v-show="cell.org_node">机构：{{cell.org_node}}</div>
-                                <div v-show="cell.org_money">金额：{{cell.org_money}}</div>
-                                <div v-show="cell.org_time">时间：{{cell.org_time}}</div>
+                            <div v-for="cell in item.organization">
+                                <span :class="$style.isclicked" @click="goToOrganization(cell.name)">
+                                    {{cell.name}}
+                                </span>
+                                {{cell.value}}
                             </div>
                         </td>
                         <td>
-                            <div v-for="cell in item.organization">
-                                {{cell.name}}
-                                {{cell.value}}
+                            <div v-for="cell in item.investpath" :class="$style.investpath">
+                                <div v-show="cell.org_name">
+                                    名称： <span :class="$style.isclicked" @click="goToOrganization(cell.name)">{{cell.org_name}}</span>
+                                    </div>
+                                <div v-show="cell.org_node">机构：{{cell.org_node}}</div>
+                                <div v-show="cell.org_money">金额：{{cell.org_money}}</div>
+                                <div v-show="cell.org_time">时间：{{cell.org_time}}</div>
                             </div>
                         </td>
                         <td>
@@ -78,7 +82,7 @@
                     total: 0,  // 总页数
                     currentPage: 1
                 },
-                searchkey: '',
+                searchkey: this.$route.query.invest || '',
                 noData: false
             };
         },
@@ -137,6 +141,9 @@
                                     }
                                 ]
                             };
+                            industryChart.on('click', function (param) {
+                                _this.$router.push({path: '/industry', query:{industry: param.data.name}});
+                            });
                             industryChart.setOption(option);
                         }
                     }, 0);
@@ -144,6 +151,9 @@
                 .catch(function (error) {
                     console.log(error);
                 })
+            },
+            goToOrganization: function (cell) {
+                this.$router.push({path: '/organization', query: {org: cell}});
             },
             handleSizeChange(val) {
                 this.pageSet.pageSize = val;
@@ -166,6 +176,12 @@
         .chartClass {
             min-width: 420px;
             min-height: 200px;
+        }
+        .isclicked {
+            cursor: pointer;
+            &:hover {
+                color: #045cf1;
+            }
         }
         .investor {
             width:1080px;

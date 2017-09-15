@@ -8,4 +8,10 @@ module.exports=[,{
 },{
     path:'/investor',
     component:require('view/investor/index.vue').default
+},{
+    path:'/organization',
+    component:require('view/organization/index.vue').default
+},{
+    path:'/industry',
+    component:require('view/industry/index.vue').default
 }];
