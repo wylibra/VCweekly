@@ -6,8 +6,6 @@ Vue.use(VueRouter);
 export default new VueRouter(krRouterInput({
     // 默认路由配置
     routes:[
-        // {path:'/finance-report',redirect:'/finance-report'},
-        // {path:'/organization',redirect:'/organization'},
-        // {path:'/investor',redirect:'/investor'},
+        {path:'*',redirect:'/finance-report'},
     ]
 },krRouter));
