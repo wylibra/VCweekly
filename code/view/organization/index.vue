@@ -9,9 +9,9 @@
                             <tr>
                                 <th>gp</th>
                                 <th>投资实体</th>
-                                <th>已发现投资事件</th>
+                                <th>待补充投资事件</th>
                                 <th>覆盖情况</th>
-                                <th>未发现投资事件</th>
+                                <th>未匹配上投资事件</th>
                             </tr>
                         </thead>
                         <tbody>
