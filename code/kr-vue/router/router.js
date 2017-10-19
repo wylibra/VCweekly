@@ -14,4 +14,7 @@ module.exports=[,{
 },{
     path:'/industry',
     component:require('view/industry/index.vue').default
+},{
+    path:'/redashData',
+    component:require('view/redashData/index.vue').default
 }];
