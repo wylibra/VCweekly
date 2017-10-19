@@ -1,6 +1,6 @@
 <template>
     <div :class="$style.root">
-        <el-carousel indicator-position="none" :interval="10000" :height="carouselHeight">
+        <el-carousel indicator-position="none" :autoplay="false" :interval="10000" :height="carouselHeight">
             <el-carousel-item v-for="(item,index) in teamArr" :key="index" >
                 <el-row :class="$style.header">
                     {{item.name}}
@@ -57,7 +57,7 @@
                     window.location.reload();
                 },60000);
             }
-            load();
+            // load();
         },
         created:function(){
 
