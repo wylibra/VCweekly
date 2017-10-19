@@ -1,3 +1,13 @@
+<a name="1.1.1"></a>
+## [1.1.1](https://github.com/wylibra/VCweekly/compare/v1.1.0...v1.1.1) (2017-10-19)
+
+
+### Bug Fixes
+
+* redash ([73eaa59](https://github.com/wylibra/VCweekly/commit/73eaa59))
+
+
+
 <a name="1.1.0"></a>
 # [1.1.0](https://github.com/wylibra/VCweekly/compare/v1.0.5...v1.1.0) (2017-09-27)
 
