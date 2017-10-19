@@ -8,7 +8,7 @@
                 <div>
                     <el-row>
                         <el-col :span="12" v-for="(cell,j) in item.imgArr" :key="j">
-                            <iframe :src="cell" width="100%"></iframe>
+                            <iframe :src="cell" width="100%" :height="iframeHeight"></iframe>
                         </el-col>
                     </el-row>
                 </div>
@@ -28,7 +28,7 @@
         data:function(){
             return {
                 locale: require('./.assets/locale/zh'),
-                // iframeHeight: window.innerHeight/2,
+                iframeHeight: (window.innerHeight -55),
                 // iframeHeight: 100,
                 carouselHeight: window.innerHeight + 'px',
                 teamArr: [{
@@ -36,6 +36,10 @@
                     imgArr: [
                         'http://redash.corp.36kr.com/embed/query/1012/visualization/553?api_key=gV4EswjZWDpttuwX7uLYfeHWoqXkgPXOQpo5yoDn',
                         'http://redash.corp.36kr.com/embed/query/1013/visualization/555?api_key=XqTPsS9OPQ3g6PSgrz9hL2kM36GhkVsKEhFheaoD',
+                    ]
+                },{
+                    name: '北京团队',
+                    imgArr: [
                         'http://redash.corp.36kr.com/embed/query/1033/visualization/578?api_key=1fg693s67EwLTF8cMCeJstL4Tx7YBJh2TLP9qvZJ',
                         'http://redash.corp.36kr.com/embed/query/1034/visualization/580?api_key=Z10T5pa3I3xRLrYkqDti4TM0bhkzaTc2zSU1R4va'
                     ]
@@ -44,6 +48,10 @@
                     imgArr: [
                         'http://redash.corp.36kr.com/embed/query/999/visualization/529?api_key=OtPBBPiEZDjBL3rVdzthcX93dmRgVQHgXX1PsPqf',
                         'http://redash.corp.36kr.com/embed/query/1007/visualization/544?api_key=F6vOY9SvfZ0e37EvKBEq0xDQXxcPbMpsUC79Kl8s',
+                    ]
+                },  {
+                    name: '天津团队',
+                    imgArr: [
                         'http://redash.corp.36kr.com/embed/query/1002/visualization/535?api_key=g4MYfyy9KanBZOOHABCyjrUu76NqgKlwzYc53DO8',
                         'http://redash.corp.36kr.com/embed/query/1003/visualization/537?api_key=ENbovmEOD5Hfihz8NOh3RsluqKTDK0I8miwNyMD0'
                     ]
@@ -70,6 +78,9 @@
 </script>
 <style lang="less" module>
     @import (optional,reference) "~view/theme.less";
+    html {
+        overflow: hidden;
+    }
     .clearfix:before,
     .clearfix:after {
         display: table;
@@ -82,7 +93,8 @@
         color: #767676;
         background-color: #edecec;
         iframe {
-            min-height: 450px;
+            overflow: hidden;
+            // min-height: 350px;
         }
         .header {
             line-height: 55px;
