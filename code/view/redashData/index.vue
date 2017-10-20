@@ -64,7 +64,7 @@
             function load() {
                 setTimeout(function(){
                     window.location.reload();
-                },300000);
+                },1200000);
             }
             load();
         },
