@@ -6,7 +6,7 @@
                     {{item.name}}
                 </el-row>
                 <div>
-                    <el-row>
+                    <el-row :class="$style.body" :style="{'line-height':bodyLineHeight}">
                         <el-col :span="12" v-for="(cell,j) in item.imgArr" :key="j">
                             <iframe :src="cell" width="100%" :height="iframeHeight" scrolling="no"></iframe>
                         </el-col>
@@ -28,8 +28,9 @@
         data:function(){
             return {
                 locale: require('./.assets/locale/zh'),
-                iframeHeight: (window.innerHeight -55),
-                // iframeHeight: 100,
+                // iframeHeight: (window.innerHeight -55),
+                iframeHeight: 450,
+                bodyLineHeight: window.innerHeight/11,
                 carouselHeight: window.innerHeight + 'px',
                 teamArr: [{
                     name: '北京团队',
