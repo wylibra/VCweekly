@@ -8,7 +8,7 @@
                 <div>
                     <el-row>
                         <el-col :span="12" v-for="(cell,j) in item.imgArr" :key="j">
-                            <iframe :src="cell" width="100%" :height="iframeHeight"></iframe>
+                            <iframe :src="cell" width="100%" :height="iframeHeight" scrolling="no"></iframe>
                         </el-col>
                     </el-row>
                 </div>
@@ -81,6 +81,7 @@
     html {
         overflow: hidden;
     }
+
     .clearfix:before,
     .clearfix:after {
         display: table;
@@ -92,10 +93,6 @@
     .root{
         color: #767676;
         background-color: #edecec;
-        iframe {
-            overflow: hidden;
-            // min-height: 350px;
-        }
         .header {
             line-height: 55px;
             background: #fff;
