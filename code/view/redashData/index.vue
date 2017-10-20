@@ -1,6 +1,6 @@
 <template>
     <div :class="$style.root">
-        <el-carousel indicator-position="none" :autoplay="false" :interval="10000" :height="carouselHeight">
+        <el-carousel indicator-position="none" :interval="300000" :height="carouselHeight">
             <el-carousel-item v-for="(item,index) in teamArr" :key="index" >
                 <el-row :class="$style.header">
                     {{item.name}}
@@ -64,9 +64,9 @@
             function load() {
                 setTimeout(function(){
                     window.location.reload();
-                },60000);
+                },300000);
             }
-            // load();
+            load();
         },
         created:function(){
 
