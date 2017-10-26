@@ -17,4 +17,28 @@ module.exports=[,{
 },{
     path:'/redashData',
     component:require('view/redashData/index.vue').default
+},{
+    path:'/home',
+    component:function(resolve){
+        require.ensure(['view/home'],function(){
+            resolve(require('view/home/index.vue').default)
+        },'home')
+    }
+}
+,{
+    path:'/lp',
+    component:require('view/lp/index.vue').default
+},{
+    path:'/org',
+    component:require('view/org/index.vue').default
+},{
+    path:'/gp',
+    component:require('view/gp/index.vue').default
+},{
+    path:'/fund',
+    component:require('view/fund/index.vue').default
+}
+,{
+    path:'/homeindex',
+    component:require('view/homeindex/index.vue').default
 }];
