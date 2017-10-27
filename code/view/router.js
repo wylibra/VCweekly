@@ -53,6 +53,7 @@ let routes =[
         path: '/',
         component: home,
         name: '',
+        redirect:'/homeindex'
     },
     {
         path: '/',

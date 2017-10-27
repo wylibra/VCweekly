@@ -58,7 +58,6 @@
                 <!--右侧内容区域-->
                 <section :class="$style.contentContainer">
                     <el-col :span="24" :class="$style.breadcrumbContainer">
-                        test 
                     </el-col>
                     <el-col :span="24" :class="$style.contentWrapper">
                         <transition name="fade" mode="out-in">
