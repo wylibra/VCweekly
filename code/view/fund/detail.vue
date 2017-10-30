@@ -24,11 +24,11 @@
                         </span>
                     </div>
                     <div :class="$style.panelContent">
-                        <div :class="$style.section">
+                        <div>
                             <a href="">查看工商信息</a>
                             <a href="">查看AMAC信息</a>
                         </div>
-                        <div :class="$style.section">
+                        <div style="height: 350px;">
                             <el-col :span="12">
                                 <div id="fundIndustryChart" :class="$style.chartClass"></div>
                             </el-col>
@@ -42,41 +42,79 @@
             <el-col :span="24">
                 <div :class="$style.detailPanel">
                     <div :class="[$style.panelHeader,$style.clearfix]">
-                        <h2 :class="$style.title">投资关系树</h2>
+                        <h2 :class="$style.title">基金关系</h2>
                     </div>
                     <div :class="$style.panelContent">
                         <div :class="$style.section">
-                            <div>对应LP</div>
+                            <div :class="$style.lineHeight">基金关系树</div>
                         </div>
-                    </div>
-                </div>
-            </el-col>
-            <el-col :span="24">
-                <div :class="$style.detailPanel">
-                    <div :class="[$style.panelHeader,$style.clearfix]">
-                        <h2 :class="$style.title">投资列表</h2>
-                    </div>
-                    <div :class="$style.panelContent">
                         <div :class="$style.section">
+                            <div :class="$style.lineHeight">amac基金管理人：上海旌卓投资管理有限公司</div>
                             <el-table
                                 :data="tableData"
                                 stripe
                                 style="width: 100%">
-                                <el-table-column label="GP" width="180" inline-template>
+                                <el-table-column label="高管姓名" width="180" inline-template>
                                     <a :href="`/#/org/detail/${row.date}`">{{row.date}}</a>
                                 </el-table-column>
                                 <el-table-column
                                 prop="name"
-                                label="基金"
+                                label="职务"
                                 width="180">
                                 </el-table-column>
                                 <el-table-column
                                 prop="address"
-                                label="对外投资">
+                                label="是否具有基金从业资格">
+                                </el-table-column>
+                            </el-table>
+                        </div>
+                        <div :class="$style.section">
+                            <div :class="$style.lineHeight">工商挖掘GP：上海经熠投资管理有限公司</div>
+                            <div :class="$style.lineHeight">工商挖掘路径：上海经熠投资管理有限公司-->上海创鋆投资管理合伙企业（有限合伙）</div>
+                            <div :class="$style.lineHeight">基金股东情况：</div>
+                            <el-table
+                                :data="tableData"
+                                stripe
+                                style="width: 100%">
+                                <el-table-column label="股东" width="180" inline-template>
+                                    <a :href="`/#/org/detail/${row.date}`">{{row.date}}</a>
+                                </el-table-column>
+                                <el-table-column
+                                prop="name"
+                                label="出资比例"
+                                width="180">
                                 </el-table-column>
                                 <el-table-column
                                 prop="address"
-                                label="是否覆盖">
+                                label="认缴出资">
+                                </el-table-column>
+                            </el-table>
+                        </div>
+                        <div :class="$style.section">
+                            <div :class="$style.lineHeight">基金对外投资：</div>
+                            <el-table
+                                :data="tableData"
+                                stripe
+                                style="width: 100%">
+                                <el-table-column label="投资公司" width="180" inline-template>
+                                    <a :href="`/#/org/detail/${row.date}`">{{row.date}}</a>
+                                </el-table-column>
+                                <el-table-column
+                                prop="name"
+                                label="投资时间"
+                                width="180">
+                                </el-table-column>
+                                <el-table-column
+                                prop="address"
+                                label="投资金额">
+                                </el-table-column>
+                                <el-table-column
+                                prop="name"
+                                label="投资占比">
+                                </el-table-column>
+                                <el-table-column
+                                prop="name"
+                                label="是否匹配">
                                 </el-table-column>
                             </el-table>
                         </div>
@@ -241,7 +279,10 @@
             .panel-content {
                 padding: 0 30px;
                 .section {
-
+                    margin-bottom:20px;
+                    .lineHeight {
+                        line-height: 30px;
+                    }
                 }
             }
         }
