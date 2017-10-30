@@ -79,9 +79,9 @@
 </script>
 <style lang="less" module>
     @import (optional,reference) "~view/theme.less";
-    html {
-        overflow: hidden;
-    }
+    // html {
+    //     overflow: hidden;
+    // }
 
     .clearfix:before,
     .clearfix:after {

@@ -53,9 +53,9 @@ let routes =[
     },
     {
         path: '/',
-        component: home,
+        component: finance,
         name: '/',
-        redirect:'/homeindex'
+        redirect:'/finance-report'
     },
     {
         path: '/',
