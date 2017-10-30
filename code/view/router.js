@@ -7,8 +7,10 @@ import home from './home/index.vue'
 import homeindex from './homeindex/index.vue'
 import lp from './lp/index.vue'
 import org from './org/index.vue'
+import orgdetail from './org/detail.vue'
 import gp from './gp/index.vue'
 import fund from './fund/index.vue'
+import funddetail from './fund/detail.vue'
 
 import finance from './finance-report/index.vue'
 import industry from './industry/index.vue'
@@ -22,44 +24,44 @@ let routes =[
     {
         path: '/finance-report',
         component: finance,
-        name: '',
+        name: '/finance-report',
         hidden: true
     },
     {
         path: '/industry',
         component: industry,
-        name: '',
+        name: '/industry',
         hidden: true
     },
     {
         path: '/investor',
         component: investor,
-        name: '',
+        name: '/investor',
         hidden: true
     },
     {
         path: '/organization',
         component: organization,
-        name: '',
+        name: '/organization',
         hidden: true
     },
     {
         path: '/redashData',
         component: redashData,
-        name: '',
+        name: '/redashData',
         hidden: true
     },
     {
         path: '/',
         component: home,
-        name: '',
+        name: '/',
         redirect:'/homeindex'
     },
     {
         path: '/',
         self_path: '/',
         component: home,
-        name: '首页',
+        name: '',
         iconCls: 'el-icon-setting',
         children: [{
                 path: 'homeindex',
@@ -73,7 +75,7 @@ let routes =[
         path: '/lp',
         self_path: '/lp',
         component: home,
-        name: 'LP',
+        name: '',
         iconCls: 'el-icon-setting',
         children: [{
                 path: 'list',
@@ -87,13 +89,18 @@ let routes =[
         path: '/org',
         self_path: '/org',
         component: home,
-        name: 'ORG',
+        name: '机构',
         iconCls: 'el-icon-menu',
         children: [{
                 path: 'list',
                 self_path: '/org/list',
                 component: org,
                 name: '机构列表'
+            },
+            {
+                path: 'detail/:name',
+                component: orgdetail,
+                name: '机构详情'
             }
         ]
     },
@@ -101,7 +108,7 @@ let routes =[
         path: '/gp',
         self_path: '/gp',
         component: home,
-        name: 'GP',
+        name: '',
         iconCls: 'el-icon-picture',
         children: [{
                 path: 'list',
@@ -115,13 +122,18 @@ let routes =[
         path: '/fund',
         self_path: '/fund',
         component: home,
-        name: '基金',
+        name: '',
         iconCls: 'el-icon-setting',
         children: [{
                 path: 'list',
                 self_path: '/fund/list',
                 component: fund,
                 name: '基金列表'
+            },
+            {
+                path: 'detail/:name',
+                component: funddetail,
+                name: '基金详情'
             }
         ]
     }

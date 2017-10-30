@@ -4,7 +4,7 @@
             <!--顶部-->
             <el-col :span="24" :class="$style.header">
                 <el-col :span="1" :class="$style.logo">
-                    <i class="el-icon-star-on"></i>
+                    <i class="el-icon-menu"></i>
                 </el-col>
                 <el-col :span="10">{{collapsed?'':sysName}}</el-col>
             </el-col>
@@ -19,14 +19,14 @@
                     <!--导航菜单-->
                     <el-menu default-active="0" router :collapse="collapsed">
                         <template v-for="(item,index) in $router.options.routes" v-if="!item.hidden">
-                            <el-submenu v-if="item.children&&item.children.length>1" :index="index+''">
+                            <!-- <el-submenu v-if="item.children&&item.children.length>1" :index="index+''">
                                 <template slot="title"><i :class="item.iconCls"></i><span slot="title">{{item.name}}</span></template>
                                 <el-menu-item v-for="term in item.children" :key="term.path" :index="term.self_path" v-if="!item.hidden"
                                                 :class="$route.path==term.path?'is-active':''">
                                     <i :class="term.iconCls"></i><span slot="title">{{term.name}}</span>
                                 </el-menu-item>
-                            </el-submenu>
-                            <el-menu-item v-else-if="item.children&&item.children.length==1" :index="item.children[0].self_path"
+                            </el-submenu> -->
+                            <el-menu-item v-if="item.children" :index="item.children[0].self_path"
                                         :class="$route.path==item.children[0].path?'is-active':''">
                             <i :class="item.iconCls"></i><span slot="title">{{item.children[0].name}}</span>
                             </el-menu-item>
@@ -58,6 +58,11 @@
                 <!--右侧内容区域-->
                 <section :class="$style.contentContainer">
                     <el-col :span="24" :class="$style.breadcrumbContainer">
+                        <!-- <el-breadcrumb separator="/" :class="$style.breadcrumbInner">
+                            <el-breadcrumb-item v-for="item in $route.matched" :key="item.path">
+                                <a :href="`/#${item.path}`">{{item.name}}</a>
+                            </el-breadcrumb-item>
+                        </el-breadcrumb> -->
                     </el-col>
                     <el-col :span="24" :class="$style.contentWrapper">
                         <transition name="fade" mode="out-in">
@@ -158,7 +163,7 @@
                             float: left;
                             color: #475669;
                         }
-                        .breadcrumb-inner {
+                        .breadcrumbInner {
                             float: right;
                         }
                     }

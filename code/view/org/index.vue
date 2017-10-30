@@ -12,10 +12,8 @@
                 :data="tableData"
                 stripe
                 style="width: 100%">
-                <el-table-column
-                prop="date"
-                label="机构名称"
-                width="180">
+                <el-table-column label="机构名称" width="180" inline-template>
+                    <a :href="`/#/org/detail/${row.date}`">{{row.date}}</a>
                 </el-table-column>
                 <el-table-column
                 prop="name"
@@ -58,19 +56,19 @@
                 locale: require('./.assets/locale/zh'),
                 searchkey: '',
                 tableData: [{
-                date: '2016-05-02',
+                date: '红杉资本',
                 name: '王小虎',
                 address: '上海市普陀区金沙江路 1518 弄'
                 }, {
-                date: '2016-05-04',
+                date: '想冒资本',
                 name: '王小虎',
                 address: '上海市普陀区金沙江路 1517 弄'
                 }, {
-                date: '2016-05-01',
+                date: 'jignwei虎',
                 name: '王小虎',
                 address: '上海市普陀区金沙江路 1519 弄'
                 }, {
-                date: '2016-05-03',
+                date: '境外虎',
                 name: '王小虎',
                 address: '上海市普陀区金沙江路 1516 弄'
                 }],
