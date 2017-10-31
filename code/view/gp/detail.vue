@@ -1,5 +1,5 @@
 <template>
-    <div :class="$style.root">
+    <div :class="[$style.root,$style.detailPage]">
         <el-row :class="[$style.margin20]">
             <el-col :span="24" :class="$style.breadcrumbContainer">
                 <el-breadcrumb separator="/" :class="$style.breadcrumbInner">
@@ -257,68 +257,6 @@
 <style lang="less" module>
     @import  "~view/theme.less";
     .root{
-        .margin20 {
-            margin-bottom: 20px;
-        }
-        .detail-panel {
-            color: @baseColor;
-            font-size: @basefont;
-            padding: 20px 0;
-            border: 1px solid #EAEAEA;
-            border-radius: 4px;
-            background-color: #FFF;
-            margin-bottom: 10px;
-            .panel-header {
-                margin-bottom: 21px;
-                line-height: 30px;
-                .title {
-                    position: relative;
-                    padding-left: 30px;
-                    font-size: 16px;
-                    color: #373552;
-                    display: inline-block;
-                    float: left;
-                    &:before {
-                        position: absolute;
-                        top: 0;
-                        left: 0;
-                        content: " ";
-                        width: 2px;
-                        height: 30px;
-                        background-color: #20a0ff;
-                    }
-                }
-                .tag {
-                    color: #FFB30A;
-                    margin-left: 10px;
-                    font-size: 13px;
-                    padding: 0px 5px;
-                    border: 1px solid #FFB30A;
-                    border-radius: 10px;
-                }
-                .fundOrg {
-                    margin-left: 100px;
-                }
-            }
-            .panel-content {
-                padding: 0 30px;
-                .section {
-                    margin-bottom:20px;
-                    .lineHeight {
-                        line-height: 30px;
-                    }
-                }
-                .lp {
-                    div {
-                        font-size: 16px;
-                        line-height: 30px;
-                    }
-                }
-            }
-        }
-        .chartClass {
-            min-width: 350px;
-            min-height: 350px;
-        }
+
     }
 </style>
