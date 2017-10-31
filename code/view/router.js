@@ -6,9 +6,11 @@ import krRouter from 'kr-vue/router/router';
 import home from './home/index.vue'
 import homeindex from './homeindex/index.vue'
 import lp from './lp/index.vue'
+import lpdetail from './lp/detail.vue'
 import org from './org/index.vue'
 import orgdetail from './org/detail.vue'
 import gp from './gp/index.vue'
+import gpdetail from './gp/detail.vue'
 import fund from './fund/index.vue'
 import funddetail from './fund/detail.vue'
 
@@ -82,6 +84,11 @@ let routes =[
                 self_path: '/lp/list',
                 component: lp,
                 name: 'LP列表'
+            },
+            {
+                path: 'detail/:name',
+                component: lpdetail,
+                name: 'LP详情'
             }
         ]
     },
@@ -115,6 +122,11 @@ let routes =[
                 self_path: '/gp/list',
                 component: gp,
                 name: 'GP列表'
+            },
+            {
+                path: 'detail/:name',
+                component: gpdetail,
+                name: 'GP详情'
             }
         ]
     },

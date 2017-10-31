@@ -19,3 +19,21 @@ export function getTableData(extra){
         return result.data;
     });
 }
+// 机构详情-树
+export function getOrgData(extra){
+    return instance.get('http://192.168.3.27:10188',{ params:  extra}).then(result=>{
+        return result.data;
+    });
+}
+// gp详情-股东信息
+export function getGpHolderData(extra){
+    return instance.get('http://192.168.3.27:10188',{ params:  extra}).then(result=>{
+        return result.data;
+    });
+}
+// gp详情-对外投资
+export function getGpInvestData(extra){
+    return instance.get('http://192.168.3.27:10188',{ params:  extra}).then(result=>{
+        return result.data;
+    });
+}

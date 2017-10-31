@@ -12,10 +12,8 @@
                 :data="tableData"
                 stripe
                 style="width: 100%">
-                <el-table-column
-                prop="date"
-                label="GP名称"
-                width="180">
+                <el-table-column label="GP名称" width="180" inline-template>
+                    <a :href="`/#/gp/detail/${row.name}`">{{row.name}}</a>
                 </el-table-column>
                 <el-table-column
                 prop="name"
