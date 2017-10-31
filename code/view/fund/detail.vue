@@ -4,10 +4,10 @@
             <el-col :span="24" :class="$style.breadcrumbContainer">
                 <el-breadcrumb separator="/" :class="$style.breadcrumbInner">
                     <el-breadcrumb-item>
-                        <a href="/#/org/list">基金列表</a>
+                        <a href="/#/fund/list">基金列表</a>
                     </el-breadcrumb-item>
                     <el-breadcrumb-item>
-                        <a href="/#/org/detail">基金详情</a>
+                        <a href="/#/fund/detail">基金详情</a>
                     </el-breadcrumb-item>
                 </el-breadcrumb>
             </el-col>
@@ -20,7 +20,8 @@
                         <span :class="$style.tag">基金</span>
                         <span :class="$style.marginLeft100">
                             所属机构： 
-                            <a href="">经纬中国</a>
+                            <a href="/#/org/detail/经纬中国">经纬中国</a>
+                            <!-- <a :href="`/#/org/detail/${}`">经纬中国</a> -->
                         </span>
                     </div>
                     <div :class="$style.panelContent">
@@ -157,7 +158,7 @@
             };
         },
         mounted: function() {
-            document.title = '机构详情';
+            document.title = '基金详情';
             console.log(this.$route.params);
             this.fundIndustryChart();
             this.fundPhaseChart();

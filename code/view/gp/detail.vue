@@ -27,7 +27,7 @@
                         <div :class="[$style.section,$style.lp]">
                             <div>对应LP</div>
                             <span>
-                                <a href="">曹国</a>   
+                                <a href="/#/lp/detail/经纬中国">曹国熊</a>   
                             </span>
                              <span>
                                 <a href="">左野绫</a>   
