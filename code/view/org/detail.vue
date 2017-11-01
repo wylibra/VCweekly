@@ -23,7 +23,7 @@
                         <div :class="[$style.section,$style.lp]">
                             <div>对应LP</div>
                             <span>
-                                <a href="">曹国</a>   
+                                <a href="/#/lp/detail/曹国熊">曹国熊</a>   
                             </span>
                              <span>
                                 <a href="">左野绫</a>   
@@ -52,9 +52,12 @@
                         </el-switch>
                     </div>
                     <div :class="$style.panelContent">
-                        <div :class="$style.section">
-                            <el-tree :data="children" :default-expand-all="true"></el-tree>
+                        <div :class="$style.section" style="overflow: scroll;">
+                            <div id="tree" style="width:150%;height: 500px;"></div>
                         </div>
+                        <!-- <div :class="$style.section">
+                            <el-tree :data="children" :default-expand-all="true"></el-tree>
+                        </div> -->
                     </div>
                 </div>
             </el-col>
@@ -100,37 +103,18 @@
 <script>
 import { mapState, mapGetters, mapMutations, mapActions } from "vuex";
 import { getOrgData } from "wrapper/http";
-import d3 from "d3";
+import Raphael from "treant-js/vendor/raphael.js";
+window.Raphael = Raphael;
+import { Treant } from 'treant-js';
+
 export default {
   props: {},
   components: {},
   data: function() {
     return {
       locale: require("./.assets/locale/zh"),
-      searchkey: "",
       hasPro: 1,
-      tableData: [
-        {
-          date: "王小虎",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1518 弄"
-        },
-        {
-          date: "王小虎",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1517 弄"
-        },
-        {
-          date: "王小虎",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1519 弄"
-        },
-        {
-          date: "王小虎",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1516 弄"
-        }
-      ],
+      tableData: [],
       children: [
         {
           fund_type: "gp",
@@ -313,7 +297,6 @@ export default {
   },
   mounted: function() {
     document.title = "机构详情";
-    // console.log(this.$route.params);
     this.getData();
   },
   methods: {
@@ -326,68 +309,39 @@ export default {
       getOrgData(sendData)
         .then(result => {
           _this.tableData = result.data.children;
-          console.log(result.data.children);
-
-          // var width = 1000, height = 1000;
-
-          // //定义数据转换函数
-          // var tree = d3.layout.tree().size([width, height - 200]);
-          // //定义对角线生成器diagonal
-          // var diagonal = d3.svg.diagonal().projection(function(d) {
-          //   return [d.y, d.x];
-          // });
-
-          // //定义svg
-          // var svg = d3
-          //   .select("body")
-          //   .append("svg")
-          //   .attr("width", width)
-          //   .attr("height", height)
-          //   .append("g")
-          //   .attr("transform", "translate(40,0)");
-
-          // //读取json文件，进行绘图
-          //   var nodes = tree.nodes(result.data);
-          //   var links = tree.links(nodes);
-
-          //   //画点
-          //   var node = svg
-          //     .selectAll(".node")
-          //     .data(nodes)
-          //     .enter()
-          //     .append("g")
-          //     .attr("class", "node")
-          //     .attr("transform", function(d) {
-          //       return "translate(" + d.y + "," + d.x + ")";
-          //     });
-          //   //加圈圈
-          //   node.append("circle").attr("r", 4.5);
-          //   //加文字
-          //   node
-          //     .append("text")
-          //     .attr("dx", function(d) {
-          //       return d.children ? -8 : 8;
-          //     })
-          //     .attr("dy", 3)
-          //     .style("text-anchor", function(d) {
-          //       return d.children ? "end" : "start";
-          //     })
-          //     .text(function(d) {
-          //       return d.name;
-          //     });
-
-          //   //画线
-          //   var line = svg
-          //     .selectAll("link")
-          //     .data(links)
-          //     .enter()
-          //     .append("path")
-          //     .attr("class", "link")
-          //     .attr("d", diagonal);
+          getArray(_this.tableData);
+          function getArray(data) {
+            let tempData = [];
+            data.forEach(function(item, index) {
+              tempData.push(item);
+              tempData[index].text = {};
+              tempData[index].text.name = item.name;
+              if (item.children.length) {
+                getArray(item.children);
+              }
+            });
+          }
+          console.log(_this.tableData);
+          var config =  {
+              chart: {
+                  container: "#tree",
+                  rootOrientation: "WEST",
+                  connectors: {
+                    type: "curve"
+                  }
+              },
+              nodeStructure: {
+                  text: { name: _this.$route.params.name },
+                  children: _this.tableData
+              }
+          }
+          new Treant(config);
         })
         .catch(err => {
           console.log(err);
         });
+      
+       
     }
   }
 };
@@ -395,6 +349,8 @@ export default {
 <style lang="less" module>
 @import "~view/theme.less";
 .root {
-
+  // .Treant > .node {
+  //   width: 100px!important;
+  // }
 }
 </style>

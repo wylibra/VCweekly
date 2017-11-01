@@ -97,7 +97,7 @@ let routes =[
         self_path: '/org',
         component: home,
         name: '机构',
-        iconCls: 'el-icon-menu',
+        iconCls: 'el-icon-setting',
         children: [{
                 path: 'list',
                 self_path: '/org/list',
@@ -116,7 +116,7 @@ let routes =[
         self_path: '/gp',
         component: home,
         name: '',
-        iconCls: 'el-icon-picture',
+        iconCls: 'el-icon-setting',
         children: [{
                 path: 'list',
                 self_path: '/gp/list',
