@@ -12,13 +12,12 @@
                 :data="tableData"
                 stripe
                 style="width: 100%">
-                <el-table-column label="GP名称" width="180" inline-template>
+                <el-table-column label="GP名称" inline-template>
                     <a :href="`/#/gp/detail/${row.name}`">{{row.name}}</a>
                 </el-table-column>
                 <el-table-column
                 prop="name"
-                label="投资实体"
-                width="180">
+                label="投资实体">
                 </el-table-column>
                 <el-table-column
                 prop="address"
@@ -57,19 +56,19 @@
                 searchkey: '',
                 tableData: [{
                 date: '2016-05-02',
-                name: '王小虎',
+                name: '经纬（杭州）创业投资合伙企业（有限合伙）',
                 address: '上海市普陀区金沙江路 1518 弄'
                 }, {
                 date: '2016-05-04',
-                name: '王小虎',
+                name: '经纬（杭州）创业投资合伙企业（有限合伙）',
                 address: '上海市普陀区金沙江路 1517 弄'
                 }, {
                 date: '2016-05-01',
-                name: '王小虎',
+                name: '经纬（杭州）创业投资合伙企业（有限合伙）',
                 address: '上海市普陀区金沙江路 1519 弄'
                 }, {
                 date: '2016-05-03',
-                name: '王小虎',
+                name: '经纬（杭州）创业投资合伙企业（有限合伙）',
                 address: '上海市普陀区金沙江路 1516 弄'
                 }],
                 pageSet: {

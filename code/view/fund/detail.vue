@@ -74,19 +74,18 @@
                             <div :class="$style.lineHeight">工商挖掘路径：上海经熠投资管理有限公司-->上海创鋆投资管理合伙企业（有限合伙）</div>
                             <div :class="$style.lineHeight">基金股东情况：</div>
                             <el-table
-                                :data="tableData"
+                                :data="fundHolderData"
                                 stripe
                                 style="width: 100%">
-                                <el-table-column label="股东" width="180" inline-template>
-                                    <a :href="`/#/org/detail/${row.date}`">{{row.date}}</a>
+                                <el-table-column label="股东" inline-template>
+                                    <a :href="`/#/org/detail/${row.name}`">{{row.name}}</a>
                                 </el-table-column>
                                 <el-table-column
-                                prop="name"
-                                label="出资比例"
-                                width="180">
+                                prop="percent"
+                                label="出资比例">
                                 </el-table-column>
                                 <el-table-column
-                                prop="address"
+                                prop="amount"
                                 label="认缴出资">
                                 </el-table-column>
                             </el-table>
@@ -94,16 +93,15 @@
                         <div :class="$style.section">
                             <div :class="$style.lineHeight">基金对外投资：</div>
                             <el-table
-                                :data="tableData"
+                                :data="fundInvestData"
                                 stripe
                                 style="width: 100%">
-                                <el-table-column label="投资公司" width="180" inline-template>
-                                    <a :href="`/#/org/detail/${row.date}`">{{row.date}}</a>
+                                <el-table-column label="投资公司" inline-template>
+                                    <a :href="`/#/org/detail/${row.name}`">{{row.name}}</a>
                                 </el-table-column>
                                 <el-table-column
-                                prop="name"
-                                label="投资时间"
-                                width="180">
+                                prop="oper_name"
+                                label="投资时间">
                                 </el-table-column>
                                 <el-table-column
                                 prop="address"
@@ -128,6 +126,7 @@
 <script>
     import {mapState,mapGetters,mapMutations,mapActions} from 'vuex'
     import echarts from 'echarts'
+    import { getHolderData, getInvestData } from "wrapper/http"
     export default{
         props:{
 
@@ -138,20 +137,22 @@
         data:function(){
             return {
                 locale: require('./.assets/locale/zh'),
+                fundHolderData: [],
+                fundInvestData: [],
                 tableData: [{
-                date: '王小虎',
+                date: '上海创鋆投资管理合伙企业（有限合伙）',
                 name: '王小虎',
                 address: '上海市普陀区金沙江路 1518 弄'
                 }, {
-                date: '王小虎',
+                date: '上海创鋆投资管理合伙企业（有限合伙）',
                 name: '王小虎',
                 address: '上海市普陀区金沙江路 1517 弄'
                 }, {
-                date: '王小虎',
+                date: '上海创鋆投资管理合伙企业（有限合伙）',
                 name: '王小虎',
                 address: '上海市普陀区金沙江路 1519 弄'
                 }, {
-                date: '王小虎',
+                date: '上海创鋆投资管理合伙企业（有限合伙）',
                 name: '王小虎',
                 address: '上海市普陀区金沙江路 1516 弄'
                 }],
@@ -162,6 +163,8 @@
             console.log(this.$route.params);
             this.fundIndustryChart();
             this.fundPhaseChart();
+            this.getFundHolderData();
+            this.getFundInvestData();
         },
         methods: {
             fundIndustryChart() {
@@ -227,6 +230,34 @@
                         ]
                     };
                     fundPhaseChart.setOption(optionInvestRel);
+            },
+            getFundHolderData() {
+                var _this = this;
+                var sendData = {
+                    cmd: "get_com_holder",
+                    cname: _this.$route.params.name
+                };
+                getHolderData(sendData)
+                .then(result => {
+                    _this.fundHolderData = result.data.result;
+                })
+                .catch(err => {
+                    console.log(err);
+                });
+            },
+            getFundInvestData() {
+                var _this = this;
+                var sendData = {
+                    cmd: "get_com_invest",
+                    cname: _this.$route.params.name
+                };
+                getInvestData(sendData)
+                .then(result => {
+                    _this.fundInvestData = result.data.result;
+                })
+                .catch(err => {
+                    console.log(err);
+                });
             }
         }
     }

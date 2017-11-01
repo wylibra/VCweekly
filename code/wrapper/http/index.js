@@ -25,14 +25,14 @@ export function getOrgData(extra){
         return result.data;
     });
 }
-// gp详情-股东信息
-export function getGpHolderData(extra){
+// gp详情-股东信息，基金详情-股东信息
+export function getHolderData(extra){
     return instance.get('http://192.168.3.27:10188',{ params:  extra}).then(result=>{
         return result.data;
     });
 }
-// gp详情-对外投资
-export function getGpInvestData(extra){
+// gp详情-对外投资，基金详情-对外投资
+export function getInvestData(extra){
     return instance.get('http://192.168.3.27:10188',{ params:  extra}).then(result=>{
         return result.data;
     });

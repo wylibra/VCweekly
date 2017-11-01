@@ -12,13 +12,12 @@
                 :data="tableData"
                 stripe
                 style="width: 100%">
-                <el-table-column label="基金名称" width="180" inline-template>
+                <el-table-column label="基金名称" inline-template>
                     <a :href="`/#/fund/detail/${row.name}`">{{row.name}}</a>
                 </el-table-column>
                 <el-table-column
                 prop="name"
-                label="对外投资"
-                width="180">
+                label="对外投资">
                 </el-table-column>
                 <el-table-column
                 prop="address"
@@ -57,19 +56,19 @@
                 searchkey: '',
                 tableData: [{
                 date: '2016-05-02',
-                name: '基金1',
+                name: '上海创鋆投资管理合伙企业（有限合伙）',
                 address: '上海市普陀区金沙江路 1518 弄'
                 }, {
                 date: '2016-05-04',
-                name: '基金12',
+                name: '上海创鋆投资管理合伙企业（有限合伙）',
                 address: '上海市普陀区金沙江路 1517 弄'
                 }, {
                 date: '2016-05-01',
-                name: '基金13',
+                name: '上海创鋆投资管理合伙企业（有限合伙）',
                 address: '上海市普陀区金沙江路 1519 弄'
                 }, {
                 date: '2016-05-03',
-                name: '基金14',
+                name: '上海创鋆投资管理合伙企业（有限合伙）',
                 address: '上海市普陀区金沙江路 1516 弄'
                 }],
                 pageSet: {

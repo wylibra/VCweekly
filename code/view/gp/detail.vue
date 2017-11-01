@@ -57,13 +57,12 @@
                                 :data="gpHolderData"
                                 stripe
                                 style="width: 100%">
-                                <el-table-column label="股东" width="180" inline-template>
+                                <el-table-column label="股东" inline-template>
                                     <a :href="`/#/org/detail/${row.name}`">{{row.name}}</a>
                                 </el-table-column>
                                 <el-table-column
                                 prop="percent"
-                                label="出资比例"
-                                width="180">
+                                label="出资比例">
                                 </el-table-column>
                                 <el-table-column
                                 prop="amount"
@@ -77,13 +76,12 @@
                                 :data="gpInvestData"
                                 stripe
                                 style="width: 100%">
-                                <el-table-column label="被投资企业名称" width="180" inline-template>
+                                <el-table-column label="被投资企业名称" inline-template>
                                     <a :href="`/#/org/detail/${row.name}`">{{row.name}}</a>
                                 </el-table-column>
                                 <el-table-column
                                 prop="oper_name"
-                                label="被投资法定代表人"
-                                width="180">
+                                label="被投资法定代表人">
                                 </el-table-column>
                                 <el-table-column
                                 prop="oper_name"
@@ -184,7 +182,7 @@
 <script>
     import {mapState,mapGetters,mapMutations,mapActions} from 'vuex'
     import echarts from 'echarts'
-    import { getGpHolderData, getGpInvestData } from "wrapper/http"
+    import { getHolderData, getInvestData } from "wrapper/http"
     export default{
         props:{
 
@@ -229,7 +227,7 @@
                     cmd: "get_com_holder",
                     cname: _this.$route.params.name
                 };
-                getGpHolderData(sendData)
+                getHolderData(sendData)
                 .then(result => {
                     _this.gpHolderData = result.data.result;
                 })
@@ -243,7 +241,7 @@
                     cmd: "get_com_invest",
                     cname: _this.$route.params.name
                 };
-                getGpInvestData(sendData)
+                getInvestData(sendData)
                 .then(result => {
                     _this.gpInvestData = result.data.result;
                 })
