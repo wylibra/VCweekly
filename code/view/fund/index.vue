@@ -20,7 +20,7 @@
                 label="对外投资">
                 </el-table-column>
                 <el-table-column
-                prop="address"
+                prop="invest_num"
                 label="工商投资案例">
                 </el-table-column>
                 <el-table-column
@@ -43,6 +43,7 @@
 </template>
 <script>
     import {mapState,mapGetters,mapMutations,mapActions} from 'vuex'
+    import { getFundData } from "wrapper/http";
     export default{
         props:{
 
@@ -54,43 +55,46 @@
             return {
                 locale: require('./.assets/locale/zh'),
                 searchkey: '',
-                tableData: [{
-                date: '2016-05-02',
-                name: '上海创鋆投资管理合伙企业（有限合伙）',
-                address: '上海市普陀区金沙江路 1518 弄'
-                }, {
-                date: '2016-05-04',
-                name: '上海创鋆投资管理合伙企业（有限合伙）',
-                address: '上海市普陀区金沙江路 1517 弄'
-                }, {
-                date: '2016-05-01',
-                name: '上海创鋆投资管理合伙企业（有限合伙）',
-                address: '上海市普陀区金沙江路 1519 弄'
-                }, {
-                date: '2016-05-03',
-                name: '上海创鋆投资管理合伙企业（有限合伙）',
-                address: '上海市普陀区金沙江路 1516 弄'
-                }],
+                tableData: [],
                 pageSet: {
                     pageSizes: [10, 20, 30, 40], // 分页
-                    pageSize: 10, // 
-                    total: 100,  // 总页数
+                    pageSize: 20, // 
+                    total: 0,  // 总页数
                     currentPage: 1
                 },
             };
         },
         mounted: function() {
             document.title = '基金列表';
+            this.getFundData();
         },
         methods: {
             sendData() {
 
             },
+            getFundData() {
+                var _this = this;
+                var sendData = {
+                    cmd: "get_funding_list",
+                    page: _this.pageSet.currentPage,
+                    page_size: _this.pageSet.pageSize
+                };
+                getFundData(sendData)
+                    .then(result => {
+                    _this.tableData = result.data;
+                    _this.pageSet.total = result.total || 100;
+                    })
+                    .catch(err => {
+                    console.log(err);
+                    });
+            },
             handleSizeChange(val) {
                 this.pageSet.pageSize = val;
+                this.getFundData();
             },
             handleCurrentChange(val) {
                 this.pageSet.currentPage = val;
+                this.getFundData();
             },
         }
     }

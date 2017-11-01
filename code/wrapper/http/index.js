@@ -37,3 +37,15 @@ export function getInvestData(extra){
         return result.data;
     });
 }
+// fund 列表
+export function getFundData(extra){
+    return instance.get('http://192.168.3.27:10188',{ params:  extra}).then(result=>{
+        return result.data;
+    });
+}
+// gp 列表
+export function getGpData(extra){
+    return instance.get('http://192.168.3.27:10188',{ params:  extra}).then(result=>{
+        return result.data;
+    });
+}

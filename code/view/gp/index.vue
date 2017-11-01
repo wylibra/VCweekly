@@ -16,11 +16,7 @@
                     <a :href="`/#/gp/detail/${row.name}`">{{row.name}}</a>
                 </el-table-column>
                 <el-table-column
-                prop="name"
-                label="投资实体">
-                </el-table-column>
-                <el-table-column
-                prop="address"
+                prop="invest_num"
                 label="管理基金">
                 </el-table-column>
                 <el-table-column
@@ -43,6 +39,7 @@
 </template>
 <script>
     import {mapState,mapGetters,mapMutations,mapActions} from 'vuex'
+    import { getGpData } from "wrapper/http";
     export default{
         props:{
 
@@ -73,24 +70,43 @@
                 }],
                 pageSet: {
                     pageSizes: [10, 20, 30, 40], // 分页
-                    pageSize: 10, // 
-                    total: 100,  // 总页数
+                    pageSize: 20, // 
+                    total: 0,  // 总页数
                     currentPage: 1
                 },
             };
         },
         mounted: function() {
             document.title = 'GP列表';
+            this.getGpData();
         },
         methods: {
             sendData() {
 
             },
+            getGpData() {
+                var _this = this;
+                var sendData = {
+                    cmd: "get_gp_list",
+                    page: _this.pageSet.currentPage,
+                    page_size: _this.pageSet.pageSize
+                };
+                getGpData(sendData)
+                    .then(result => {
+                    _this.tableData = result.data;
+                    _this.pageSet.total = result.total || 100;
+                    })
+                    .catch(err => {
+                    console.log(err);
+                    });
+            },
             handleSizeChange(val) {
                 this.pageSet.pageSize = val;
+                this.getGpData();
             },
             handleCurrentChange(val) {
                 this.pageSet.currentPage = val;
+                this.getGpData();
             },
         }
     }
