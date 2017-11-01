@@ -50,10 +50,11 @@
                             :on-value="1"
                             :off-value="0" :width="100">
                         </el-switch>
+                        <a :href="`/#/org/detailtree/${$route.params.name}`" target="_blank">查看完整关系树</a>
                     </div>
                     <div :class="$style.panelContent">
                         <div :class="$style.section" style="overflow: scroll;">
-                            <div id="tree" style="width:150%;height: 500px;"></div>
+                            <div id="tree" style="width:200%;height: 500px;"></div>
                         </div>
                         <!-- <div :class="$style.section">
                             <el-tree :data="children" :default-expand-all="true"></el-tree>

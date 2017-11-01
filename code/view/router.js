@@ -9,6 +9,7 @@ import lp from './lp/index.vue'
 import lpdetail from './lp/detail.vue'
 import org from './org/index.vue'
 import orgdetail from './org/detail.vue'
+import orgdetailtree from './org/detailtree.vue'
 import gp from './gp/index.vue'
 import gpdetail from './gp/detail.vue'
 import fund from './fund/index.vue'
@@ -58,6 +59,12 @@ let routes =[
         component: finance,
         name: '/',
         redirect:'/finance-report'
+    },
+    {
+        path: '/org/detailtree/:name',
+        component: orgdetailtree,
+        name: '关系树',
+        hidden: true
     },
     {
         path: '/',
