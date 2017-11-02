@@ -39,7 +39,7 @@
 </template>
 <script>
     import {mapState,mapGetters,mapMutations,mapActions} from 'vuex'
-    import { getGpData } from "wrapper/http";
+    import { getGpListData } from "wrapper/http";
     export default{
         props:{
 
@@ -62,20 +62,20 @@
         },
         mounted: function() {
             document.title = 'GP列表';
-            this.getGpData();
+            this.getGpListData();
         },
         methods: {
             sendData() {
 
             },
-            getGpData() {
+            getGpListData() {
                 var _this = this;
                 var sendData = {
                     cmd: "get_gp_list",
                     page: _this.pageSet.currentPage,
                     page_size: _this.pageSet.pageSize
                 };
-                getGpData(sendData)
+                getGpListData(sendData)
                     .then(result => {
                     _this.tableData = result.data;
                     _this.pageSet.total = result.total || 100;
@@ -86,11 +86,11 @@
             },
             handleSizeChange(val) {
                 this.pageSet.pageSize = val;
-                this.getGpData();
+                this.getGpListData();
             },
             handleCurrentChange(val) {
                 this.pageSet.currentPage = val;
-                this.getGpData();
+                this.getGpListData();
             },
         }
     }

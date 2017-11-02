@@ -56,38 +56,7 @@
                         </div>
                         <div :class="$style.section">
                             <div :class="$style.lineHeight">对外投资：</div>
-                            <el-table
-                                :data="gpInvestData"
-                                stripe
-                                style="width: 100%">
-                                <el-table-column label="被投资企业名称" inline-template>
-                                    <a :href="`/#/org/detail/${row.name}`">{{row.name}}</a>
-                                </el-table-column>
-                                <el-table-column
-                                prop="oper_name"
-                                label="被投资法定代表人">
-                                </el-table-column>
-                                <el-table-column
-                                prop="oper_name"
-                                label="注册资本">
-                                </el-table-column>
-                                <el-table-column
-                                prop="oper_name"
-                                label="投资数额">
-                                </el-table-column>
-                                 <el-table-column
-                                prop="daoper_namete"
-                                label="投资占比">
-                                </el-table-column>
-                                 <el-table-column
-                                prop="satrt_date"
-                                label="注册时间">
-                                </el-table-column>
-                                 <el-table-column
-                                prop="satrt_date"
-                                label="状态">
-                                </el-table-column>
-                            </el-table>
+                            <invest :cname="$route.params.name"></invest>
                         </div>
                         <div :class="$style.section">
                             <div :class="$style.lineHeight">基金列表：</div>
@@ -134,27 +103,18 @@
     import manager from '../_manager/index'
     import amacPerson from '../_amacPerson/index'
     import holder from '../_holder/index'
+    import invest from '../_invest/index'
     export default{
         props:{
 
         },
         components:{
-            manager,amacPerson,holder
+            manager,amacPerson,holder,invest
         },
         data:function(){
             return {
                 locale: require('./.assets/locale/zh'),
-                gpHolderData: [],
-                gpInvestData: [],
                 tableData: [{
-                date: '王小虎',
-                name: '王小虎',
-                address: '上海市普陀区金沙江路 1518 弄'
-                }, {
-                date: '王小虎',
-                name: '王小虎',
-                address: '上海市普陀区金沙江路 1517 弄'
-                }, {
                 date: '王小虎',
                 name: '王小虎',
                 address: '上海市普陀区金沙江路 1519 弄'
@@ -168,23 +128,9 @@
         mounted: function() {
             document.title = 'GP详情';
             console.log(this.$route.params);
-            this.getGpInvestData();
         },
         methods: {
-            getGpInvestData() {
-                var _this = this;
-                var sendData = {
-                    cmd: "get_com_invest",
-                    cname: _this.$route.params.name
-                };
-                getInvestData(sendData)
-                .then(result => {
-                    _this.gpInvestData = result.data.result;
-                })
-                .catch(err => {
-                    console.log(err);
-                });
-            }
+            
         }
     }
 </script>

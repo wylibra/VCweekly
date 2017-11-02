@@ -61,30 +61,7 @@
                         </div>
                         <div :class="$style.section">
                             <div :class="$style.lineHeight">基金对外投资：</div>
-                            <el-table
-                                :data="fundInvestData"
-                                stripe
-                                style="width: 100%">
-                                <el-table-column label="投资公司" inline-template>
-                                    <a :href="`/#/org/detail/${row.name}`">{{row.name}}</a>
-                                </el-table-column>
-                                <el-table-column
-                                prop="oper_name"
-                                label="投资时间">
-                                </el-table-column>
-                                <el-table-column
-                                prop="address"
-                                label="投资金额">
-                                </el-table-column>
-                                <el-table-column
-                                prop="name"
-                                label="投资占比">
-                                </el-table-column>
-                                <el-table-column
-                                prop="name"
-                                label="是否匹配">
-                                </el-table-column>
-                            </el-table>
+                            <invest :cname="$route.params.name"></invest>
                         </div>
                     </div>
                 </div>
@@ -98,30 +75,21 @@
     import { getHolderData, getInvestData } from "wrapper/http"
     import manager from '../_manager/index'
     import holder from '../_holder/index'
+    import invest from '../_invest/index'
     export default{
         props:{
 
         },
         components:{
-            manager,holder
+            manager,holder,invest
         },
         data:function(){
             return {
                 locale: require('./.assets/locale/zh'),
-                fundHolderData: [],
-                fundInvestData: [],
                 tableData: [{
                 date: '上海创鋆投资管理合伙企业（有限合伙）',
                 name: '王小虎',
                 address: '上海市普陀区金沙江路 1518 弄'
-                }, {
-                date: '上海创鋆投资管理合伙企业（有限合伙）',
-                name: '王小虎',
-                address: '上海市普陀区金沙江路 1517 弄'
-                }, {
-                date: '上海创鋆投资管理合伙企业（有限合伙）',
-                name: '王小虎',
-                address: '上海市普陀区金沙江路 1519 弄'
                 }, {
                 date: '上海创鋆投资管理合伙企业（有限合伙）',
                 name: '王小虎',
@@ -134,8 +102,6 @@
             console.log(this.$route.params);
             this.fundIndustryChart();
             this.fundPhaseChart();
-            this.getFundHolderData();
-            this.getFundInvestData();
         },
         methods: {
             fundIndustryChart() {
@@ -201,34 +167,6 @@
                         ]
                     };
                     fundPhaseChart.setOption(optionInvestRel);
-            },
-            getFundHolderData() {
-                var _this = this;
-                var sendData = {
-                    cmd: "get_com_holder",
-                    cname: _this.$route.params.name
-                };
-                getHolderData(sendData)
-                .then(result => {
-                    _this.fundHolderData = result.data.result;
-                })
-                .catch(err => {
-                    console.log(err);
-                });
-            },
-            getFundInvestData() {
-                var _this = this;
-                var sendData = {
-                    cmd: "get_com_invest",
-                    cname: _this.$route.params.name
-                };
-                getInvestData(sendData)
-                .then(result => {
-                    _this.fundInvestData = result.data.result;
-                })
-                .catch(err => {
-                    console.log(err);
-                });
             }
         }
     }

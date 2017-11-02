@@ -33,7 +33,7 @@ export function getOrgData(extra){
 }
 
 // gp 列表
-export function getGpData(extra){
+export function getGpListData(extra){
     return instance.get('http://192.168.3.27:10188',{ params:  extra}).then(result=>{
         return result.data;
     });
@@ -44,7 +44,7 @@ export function getHolderData(extra){
         return result.data;
     });
 }
-// gp详情-对外投资，基金详情-对外投资
+// gp详情，基金详情 通用对外投资接口
 export function getInvestData(extra){
     return instance.get('http://192.168.3.27:10188',{ params:  extra}).then(result=>{
         return result.data;
@@ -64,7 +64,7 @@ export function getAmacPersonData(extra){
 }
 
 // 基金 列表
-export function getFundData(extra){
+export function getFundListData(extra){
     return instance.get('http://192.168.3.27:10188',{ params:  extra}).then(result=>{
         return result.data;
     });

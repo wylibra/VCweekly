@@ -43,7 +43,7 @@
 </template>
 <script>
     import {mapState,mapGetters,mapMutations,mapActions} from 'vuex'
-    import { getFundData } from "wrapper/http";
+    import { getFundListData } from "wrapper/http";
     export default{
         props:{
 
@@ -66,20 +66,20 @@
         },
         mounted: function() {
             document.title = '基金列表';
-            this.getFundData();
+            this.getFundListData();
         },
         methods: {
             sendData() {
 
             },
-            getFundData() {
+            getFundListData() {
                 var _this = this;
                 var sendData = {
                     cmd: "get_funding_list",
                     page: _this.pageSet.currentPage,
                     page_size: _this.pageSet.pageSize
                 };
-                getFundData(sendData)
+                getFundListData(sendData)
                     .then(result => {
                     _this.tableData = result.data;
                     _this.pageSet.total = result.total || 100;
@@ -90,11 +90,11 @@
             },
             handleSizeChange(val) {
                 this.pageSet.pageSize = val;
-                this.getFundData();
+                this.getFundListData();
             },
             handleCurrentChange(val) {
                 this.pageSet.currentPage = val;
-                this.getFundData();
+                this.getFundListData();
             },
         }
     }
