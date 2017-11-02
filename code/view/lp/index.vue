@@ -69,8 +69,8 @@
                 address: '12200万'
                 }],
                 pageSet: {
-                    pageSizes: [10, 20, 30, 40], // 分页
-                    pageSize: 10, // 
+                    pageSizes: [20, 50, 100], // 分页
+                    pageSize: 20, // 
                     total: 100,  // 总页数
                     currentPage: 1
                 },

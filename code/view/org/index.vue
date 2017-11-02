@@ -12,20 +12,19 @@
                 :data="tableData"
                 stripe
                 style="width: 100%">
-                <el-table-column label="机构名称" width="180" inline-template>
-                    <a :href="`/#/org/detail/${row.date}`">{{row.date}}</a>
+                <el-table-column label="机构名称" inline-template>
+                    <a :href="`/#/org/detail/${row.name}`">{{row.name}}</a>
                 </el-table-column>
                 <el-table-column
-                prop="name"
-                label="实体数量"
-                width="180">
+                prop="entity_num"
+                label="实体数量">
                 </el-table-column>
                 <el-table-column
-                prop="address"
+                prop="gp_num"
                 label="GP数量">
                 </el-table-column>
                 <el-table-column
-                prop="address"
+                prop="funding_num"
                 label="基金数量">
                 </el-table-column>
             </el-table>
@@ -44,6 +43,7 @@
 </template>
 <script>
     import {mapState,mapGetters,mapMutations,mapActions} from 'vuex'
+    import { getOrgListData } from "wrapper/http";
     export default{
         props:{
 
@@ -55,43 +55,46 @@
             return {
                 locale: require('./.assets/locale/zh'),
                 searchkey: '',
-                tableData: [{
-                date: '红杉资本',
-                name: '王小虎',
-                address: '上海市普陀区金沙江路 1518 弄'
-                }, {
-                date: '想冒资本',
-                name: '王小虎',
-                address: '上海市普陀区金沙江路 1517 弄'
-                }, {
-                date: 'jignwei虎',
-                name: '王小虎',
-                address: '上海市普陀区金沙江路 1519 弄'
-                }, {
-                date: '境外虎',
-                name: '王小虎',
-                address: '上海市普陀区金沙江路 1516 弄'
-                }],
+                tableData: [],
                 pageSet: {
-                    pageSizes: [10, 20, 30, 40], // 分页
-                    pageSize: 10, // 
-                    total: 100,  // 总页数
+                    pageSizes: [20, 50, 100], // 分页
+                    pageSize: 20, // 
+                    total: 0,  // 总页数
                     currentPage: 1
                 },
             };
         },
         mounted: function() {
             document.title = '机构列表';
+            this.getOrgListData();
         },
         methods: {
             sendData() {
 
             },
+            getOrgListData() {
+                var _this = this;
+                var sendData = {
+                    cmd: "get_org_list",
+                    page: _this.pageSet.currentPage,
+                    page_size: _this.pageSet.pageSize
+                };
+                getOrgListData(sendData)
+                    .then(result => {
+                    _this.tableData = result.data;
+                    _this.pageSet.total = result.total;
+                    })
+                    .catch(err => {
+                    console.log(err);
+                    });
+            },
             handleSizeChange(val) {
                 this.pageSet.pageSize = val;
+                this.getOrgListData();                
             },
             handleCurrentChange(val) {
                 this.pageSet.currentPage = val;
+                this.getOrgListData();
             },
         }
     }

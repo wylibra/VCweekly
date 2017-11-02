@@ -57,7 +57,7 @@
                 searchkey: '',
                 tableData: [],
                 pageSet: {
-                    pageSizes: [10, 20, 30, 40], // 分页
+                    pageSizes: [20, 50, 100], // 分页
                     pageSize: 20, // 
                     total: 0,  // 总页数
                     currentPage: 1

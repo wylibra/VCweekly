@@ -51,25 +51,9 @@
             return {
                 locale: require('./.assets/locale/zh'),
                 searchkey: '',
-                tableData: [{
-                date: '2016-05-02',
-                name: '经纬（杭州）创业投资合伙企业（有限合伙）',
-                address: '上海市普陀区金沙江路 1518 弄'
-                }, {
-                date: '2016-05-04',
-                name: '经纬（杭州）创业投资合伙企业（有限合伙）',
-                address: '上海市普陀区金沙江路 1517 弄'
-                }, {
-                date: '2016-05-01',
-                name: '经纬（杭州）创业投资合伙企业（有限合伙）',
-                address: '上海市普陀区金沙江路 1519 弄'
-                }, {
-                date: '2016-05-03',
-                name: '经纬（杭州）创业投资合伙企业（有限合伙）',
-                address: '上海市普陀区金沙江路 1516 弄'
-                }],
+                tableData: [],
                 pageSet: {
-                    pageSizes: [10, 20, 30, 40], // 分页
+                    pageSizes: [20, 50, 100], // 分页
                     pageSize: 20, // 
                     total: 0,  // 总页数
                     currentPage: 1

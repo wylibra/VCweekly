@@ -19,12 +19,19 @@ export function getTableData(extra){
         return result.data;
     });
 }
+// 机构 列表
+export function getOrgListData(extra){
+    return instance.get('http://192.168.3.27:10188',{ params:  extra}).then(result=>{
+        return result.data;
+    });
+}
 // 机构详情-树
 export function getOrgData(extra){
     return instance.get('http://192.168.3.27:10188',{ params:  extra}).then(result=>{
         return result.data;
     });
 }
+
 // gp 列表
 export function getGpData(extra){
     return instance.get('http://192.168.3.27:10188',{ params:  extra}).then(result=>{
@@ -55,7 +62,8 @@ export function getAmacPersonData(extra){
         return result.data;
     })
 }
-// fund 列表
+
+// 基金 列表
 export function getFundData(extra){
     return instance.get('http://192.168.3.27:10188',{ params:  extra}).then(result=>{
         return result.data;
