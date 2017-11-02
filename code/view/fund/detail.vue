@@ -51,44 +51,13 @@
                         </div>
                         <div :class="$style.section">
                             <div :class="$style.lineHeight">amac基金管理人：上海旌卓投资管理有限公司</div>
-                            <el-table
-                                :data="tableData"
-                                stripe
-                                style="width: 100%">
-                                <el-table-column label="高管姓名" width="180" inline-template>
-                                    <a :href="`/#/org/detail/${row.date}`">{{row.date}}</a>
-                                </el-table-column>
-                                <el-table-column
-                                prop="name"
-                                label="职务"
-                                width="180">
-                                </el-table-column>
-                                <el-table-column
-                                prop="address"
-                                label="是否具有基金从业资格">
-                                </el-table-column>
-                            </el-table>
+                            <manager :org-name="$route.params.name"></manager>
                         </div>
                         <div :class="$style.section">
                             <div :class="$style.lineHeight">工商挖掘GP：上海经熠投资管理有限公司</div>
                             <div :class="$style.lineHeight">工商挖掘路径：上海经熠投资管理有限公司-->上海创鋆投资管理合伙企业（有限合伙）</div>
                             <div :class="$style.lineHeight">基金股东情况：</div>
-                            <el-table
-                                :data="fundHolderData"
-                                stripe
-                                style="width: 100%">
-                                <el-table-column label="股东" inline-template>
-                                    <a :href="`/#/org/detail/${row.name}`">{{row.name}}</a>
-                                </el-table-column>
-                                <el-table-column
-                                prop="percent"
-                                label="出资比例">
-                                </el-table-column>
-                                <el-table-column
-                                prop="amount"
-                                label="认缴出资">
-                                </el-table-column>
-                            </el-table>
+                            <holder :cname="$route.params.name"></holder>
                         </div>
                         <div :class="$style.section">
                             <div :class="$style.lineHeight">基金对外投资：</div>
@@ -127,12 +96,14 @@
     import {mapState,mapGetters,mapMutations,mapActions} from 'vuex'
     import echarts from 'echarts'
     import { getHolderData, getInvestData } from "wrapper/http"
+    import manager from '../_manager/index'
+    import holder from '../_holder/index'
     export default{
         props:{
 
         },
         components:{
-
+            manager,holder
         },
         data:function(){
             return {

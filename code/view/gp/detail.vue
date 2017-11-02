@@ -39,7 +39,6 @@
                                 <a href="">左野绫</a>   
                             </span>
                         </div>
-                       
                     </div>
                 </div>
             </el-col>
@@ -53,22 +52,7 @@
                             <div :class="$style.lineHeight">所属机构：上海旌卓投资管理有限公司</div>
                             <div :class="$style.lineHeight">法人代表：经纬（杭州）投资管理有限公司</div>
                             <div :class="$style.lineHeight">股东信息：</div>
-                            <el-table
-                                :data="gpHolderData"
-                                stripe
-                                style="width: 100%">
-                                <el-table-column label="股东" inline-template>
-                                    <a :href="`/#/org/detail/${row.name}`">{{row.name}}</a>
-                                </el-table-column>
-                                <el-table-column
-                                prop="percent"
-                                label="出资比例">
-                                </el-table-column>
-                                <el-table-column
-                                prop="amount"
-                                label="认缴出资">
-                                </el-table-column>
-                            </el-table>
+                            <holder :cname="$route.params.name"></holder>
                         </div>
                         <div :class="$style.section">
                             <div :class="$style.lineHeight">对外投资：</div>
@@ -131,47 +115,11 @@
                         </div>
                         <div :class="$style.section">
                             <div :class="$style.lineHeight">高管情况：</div>
-                            <el-table
-                                :data="tableData"
-                                stripe
-                                style="width: 100%">
-                                <el-table-column label="高管姓名" width="180" inline-template>
-                                    <a :href="`/#/org/detail/${row.date}`">{{row.date}}</a>
-                                </el-table-column>
-                                <el-table-column
-                                prop="name"
-                                label="职务"
-                                width="180">
-                                </el-table-column>
-                                <el-table-column
-                                prop="address"
-                                label="是否具有基金从业资格">
-                                </el-table-column>
-                            </el-table>
+                            <manager :org-name="$route.params.name"></manager>
                         </div>
                         <div :class="$style.section">
                             <div :class="$style.lineHeight">基金从业人员：</div>
-                            <el-table
-                                :data="tableData"
-                                stripe
-                                style="width: 100%">
-                                <el-table-column label="姓名" width="180" inline-template>
-                                    <a :href="`/#/org/detail/${row.date}`">{{row.date}}</a>
-                                </el-table-column>
-                                <el-table-column
-                                prop="name"
-                                label="从业资格类别"
-                                width="180">
-                                </el-table-column>
-                                <el-table-column
-                                prop="name"
-                                label="证书取得日期">
-                                </el-table-column>
-                                 <el-table-column
-                                prop="name"
-                                label="证书有效日期">
-                                </el-table-column>
-                            </el-table>
+                            <amacPerson :org-name="$route.params.name"></amacPerson>
                         </div>
                     </div>
                 </div>
@@ -183,12 +131,15 @@
     import {mapState,mapGetters,mapMutations,mapActions} from 'vuex'
     import echarts from 'echarts'
     import { getHolderData, getInvestData } from "wrapper/http"
+    import manager from '../_manager/index'
+    import amacPerson from '../_amacPerson/index'
+    import holder from '../_holder/index'
     export default{
         props:{
 
         },
         components:{
-
+            manager,amacPerson,holder
         },
         data:function(){
             return {
@@ -217,24 +168,9 @@
         mounted: function() {
             document.title = 'GP详情';
             console.log(this.$route.params);
-            this.getGpHolderData();
             this.getGpInvestData();
         },
         methods: {
-            getGpHolderData() {
-                var _this = this;
-                var sendData = {
-                    cmd: "get_com_holder",
-                    cname: _this.$route.params.name
-                };
-                getHolderData(sendData)
-                .then(result => {
-                    _this.gpHolderData = result.data.result;
-                })
-                .catch(err => {
-                    console.log(err);
-                });
-            },
             getGpInvestData() {
                 var _this = this;
                 var sendData = {
