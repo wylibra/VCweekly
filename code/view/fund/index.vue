@@ -11,7 +11,7 @@
             <el-table
                 :data="tableData"
                 stripe
-                style="width: 100%">
+                style="width: 100%" :empty-text="emptyText">
                 <el-table-column label="基金名称" inline-template>
                     <a :href="`/#/fund/detail/${row.name}`">{{row.name}}</a>
                 </el-table-column>
@@ -56,6 +56,7 @@
                 locale: require('./.assets/locale/zh'),
                 searchkey: '',
                 tableData: [],
+                emptyText: '加载中...',
                 pageSet: {
                     pageSizes: [20, 50, 100], // 分页
                     pageSize: 20, // 
@@ -79,10 +80,14 @@
                     page: _this.pageSet.currentPage,
                     page_size: _this.pageSet.pageSize
                 };
+                this.emptyText = '加载中...';
                 getFundListData(sendData)
                     .then(result => {
-                    _this.tableData = result.data;
-                    _this.pageSet.total = result.total || 100;
+                        _this.tableData = result.data;
+                        _this.pageSet.total = result.total;
+                        if (_this.pageSet.total === 0) {
+                            _this.emptyText = '暂无数据';
+                        }
                     })
                     .catch(err => {
                     console.log(err);
